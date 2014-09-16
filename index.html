@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" ng-app="sounddenly">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+        <title>Sounddenly</title>
+
+        <link rel="stylesheet" href="css/screen.css"/>
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="view-animate-container">
+            <div class="view-animate" ng-view></div>
+        </div>
+    </body>
+
+	<!-- Angular libraries -->
+	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-resource.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-loader.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-touch.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-local-storage.min.js"></script>
+
+	<!-- Specific js files -->
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/sounddenly.js"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		app.initialize();
+	</script>
+</html>
