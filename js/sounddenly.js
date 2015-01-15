@@ -6,7 +6,8 @@ angular.module('sounddenly', [
 	'sounddenly.filters',
 	'sounddenly.controllers',
 	'ngSanitize',
-	'LocalStorageModule'
+	'LocalStorageModule',
+	'snap'
 	])
 
     .config(['$routeProvider', function($routeProvider) {

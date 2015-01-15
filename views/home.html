@@ -1,1 +1,16 @@
-<p>This is the content of the template</p>
+<div snap-content class="snap-content">
+	<header ng-include src="'views/header.html'"></header>
+
+	<div ng-include src="'views/console.html'"></div>
+
+	<footer ng-include src="'views/footer.html'"></footer>
+</div>
+
+<div snap-drawers class="snap-drawers">
+	<div snap-drawer class="snap-drawers--left">
+	    I'm a left drawer!
+	</div>
+	<div snap-drawer="right" class="snap-drawers--right">
+	    I'm a right drawer!
+	</div>
+</div>

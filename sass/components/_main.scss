@@ -1,9 +1,16 @@
 html, body {
-	font: $font-size $font-stack;
-    line-height: $line-height;
+	font: $font-size $font-stack !important;
+    line-height: $line-height !important;
 
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+
+    background-color: $color-bg-dk;
+    color: $color-bg-lg;
+}
+
+h1 {
+	font-family: sofiaregular, sans-serif !important;
 }

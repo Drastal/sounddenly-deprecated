@@ -67,12 +67,82 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+/*	Fonts
+-------------------------------------------------------------------------- */
+/*	Colors
+-------------------------------------------------------------------------- */
 /* line 1, ../sass/components/_main.scss */
 html, body {
-  font: 100% "Junction-rg", sans-serif;
-  line-height: 166.66667%;
+  font: 100% "Junction-rg", sans-serif !important;
+  line-height: 166.66667% !important;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  background-color: #0b0d0d;
+  color: #d9c4b8;
+}
+
+/* line 14, ../sass/components/_main.scss */
+h1 {
+  font-family: sofiaregular, sans-serif !important;
+}
+
+/* line 3, ../sass/components/_header.scss */
+header .header-options {
+  text-align: right;
+}
+/* line 7, ../sass/components/_header.scss */
+header .file-browse {
+  width: 300px !important;
+  background-color: #208c81;
+  color: #d9c4b8;
+}
+
+/* line 1, ../sass/components/_snap.scss */
+.snap-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100%;
+  background-color: #0b0d0d;
+  background-image: linear-gradient(120deg, #0b0d0d, #124e48, #0b0d0d);
+  z-index: 2;
+}
+
+/* line 15, ../sass/components/_snap.scss */
+.snap-drawers {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+/* line 24, ../sass/components/_snap.scss */
+.snap-drawers .snap-drawers--left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 266px;
+  padding: 10px;
+  z-index: 1;
+}
+/* line 36, ../sass/components/_snap.scss */
+.snap-drawers .snap-drawers--right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 266px;
+  padding: 10px;
+  z-index: 1;
+}
+
+/* line 1, ../sass/components/_console.scss */
+.visualizer {
+  background-color: #4e5d6c;
 }

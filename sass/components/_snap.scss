@@ -1,0 +1,47 @@
+.snap-content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	min-height: 100%;
+
+	background-color: $color-bg-dk;
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-dk, 15), $color-bg-dk));
+
+	z-index: 2;
+}
+
+.snap-drawers {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	z-index: 1;
+
+	.snap-drawers--left {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+
+		width: 266px;
+		padding: 10px;
+
+		z-index: 1;
+	}
+
+	.snap-drawers--right {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+
+		width: 266px;
+		padding: 10px;
+
+		z-index: 1;
+	}
+}
