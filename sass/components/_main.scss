@@ -14,3 +14,160 @@ html, body {
 h1 {
 	font-family: sofiaregular, sans-serif !important;
 }
+
+.range {
+	display: inline-block;
+	width: 80px;
+
+    @mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
+        @include box-shadow($shadow-size $shadow-size $shadow-blur $shadow-color, 0px 0px $shadow-size lighten($shadow-color, 5%));
+    }
+    @mixin track() {
+        width: $track-width;
+        height: $track-height;
+        cursor: pointer;
+    }
+    @mixin thumb() {
+        @include shadow($thumb-shadow-size, $thumb-shadow-blur, $thumb-shadow-color);
+        border: $thumb-border-width solid $thumb-border-color;
+        height: $thumb-height;
+        width: $thumb-width;
+        border-radius: $thumb-radius;
+        background: $thumb-color;
+        cursor: pointer;
+    }
+
+    input[type=range] {
+        -webkit-appearance: none;
+        margin: $thumb-height/2 0;
+        width: $track-width;
+        &:focus {
+            outline: none;
+        }
+        &::-webkit-slider-runnable-track {
+            @include track();
+            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+            background: $track-color;
+            border-radius: $track-radius;
+            border: $track-border-width solid $track-border-color;
+        }
+        &::-webkit-slider-thumb {
+            @include thumb();
+            -webkit-appearance: none;
+            margin-top: ((-$track-border-width * 2 + $track-height) / 2) - ($thumb-height / 2);
+        }
+        &:focus::-webkit-slider-runnable-track {
+            background: lighten($track-color, $contrast);
+        }
+        &::-moz-range-track {
+            @include track();
+            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+            background: $track-color;
+            border-radius: $track-radius;
+            border: $track-border-width solid $track-border-color;
+        }
+        &::-moz-range-thumb {
+            @include thumb();
+        }
+        &::-ms-track {
+            @include track();
+            background: transparent;
+            border-color: transparent;
+            border-width: $thumb-width 0;
+            color: transparent;
+        }
+        &::-ms-fill-lower {
+            background: darken($track-color, $contrast);
+            border: $track-border-width solid $track-border-color;
+            border-radius: $track-radius*2;
+            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+        }
+        &::-ms-fill-upper {
+            background: $track-color;
+            border: $track-border-width solid $track-border-color;
+            border-radius: $track-radius*2;
+            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+        }
+        &::-ms-thumb {
+            @include thumb();
+        }
+        &:focus::-ms-fill-lower {
+            background: $track-color;
+        }
+        &:focus::-ms-fill-upper {
+            background: lighten($track-color, $contrast);
+        }
+    }
+}
+
+.range.red input[type=range]{
+	&::-webkit-slider-thumb {
+    	background: $color-acc-red;
+    }
+	&::-moz-range-thumb {
+    	background: $color-acc-red;
+    }
+	&::-ms-thumb {
+    	background: $color-acc-red;
+    }
+}
+
+.range.orange input[type=range]{
+	&::-webkit-slider-thumb {
+    	background: $color-acc-orange;
+    }
+	&::-moz-range-thumb {
+    	background: $color-acc-orange;
+    }
+	&::-ms-thumb {
+    	background: $color-acc-orange;
+    }
+}
+
+.range.orange input[type=range]{
+	&::-webkit-slider-thumb {
+    	background: $color-acc-orange;
+    }
+	&::-moz-range-thumb {
+    	background: $color-acc-orange;
+    }
+	&::-ms-thumb {
+    	background: $color-acc-orange;
+    }
+}
+
+.range.green input[type=range]{
+	&::-webkit-slider-thumb {
+    	background: $color-acc-green;
+    }
+	&::-moz-range-thumb {
+    	background: $color-acc-green;
+    }
+	&::-ms-thumb {
+    	background: $color-acc-green;
+    }
+}
+
+.range.violet input[type=range]{
+	&::-webkit-slider-thumb {
+    	background: $color-acc-violet;
+    }
+	&::-moz-range-thumb {
+    	background: $color-acc-violet;
+    }
+	&::-ms-thumb {
+    	background: $color-acc-violet;
+    }
+}
+
+.range.blue input[type=range]{
+	&::-webkit-slider-thumb {
+    	background: $color-acc-blue;
+    }
+	&::-moz-range-thumb {
+    	background: $color-acc-blue;
+    }
+	&::-ms-thumb {
+    	background: $color-acc-blue;
+    }
+}

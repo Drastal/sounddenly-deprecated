@@ -6,7 +6,27 @@ header {
 
 	.file-browse {
 		width: 300px !important;
-		background-color: $color-acc-dk;
+		background-color: $color-acc-turquoise;
 		color: $color-bg-lg;
+	}
+
+	.file-browse.red {
+		background-color: $color-acc-red;
+	}
+
+	.file-browse.orange {
+		background-color: $color-acc-orange;
+	}
+
+	.file-browse.green {
+		background-color: $color-acc-green;
+	}
+
+	.file-browse.violet {
+		background-color: $color-acc-violet;
+	}
+
+	.file-browse.blue {
+		background-color: $color-acc-blue;
 	}
 }

@@ -1,0 +1,29 @@
+<div class="row" ng-controller="PlayerCtrl as player">
+	<div class="col-sm-12 player" data-snap-ignore="true">
+		<div class="row">
+			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': player.playing}">
+				<div class="player-controls-play">
+					<span class="glyphicon glyphicon-backward control" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-play control" aria-hidden="true" ng-click="player.play()"></span>
+					<span class="glyphicon glyphicon-pause control" aria-hidden="true" ng-click="player.play()"></span>
+					<span class="glyphicon glyphicon-forward control" aria-hidden="true"></span>
+				</div>
+				<div class="player-controls-volume">
+					<span class="glyphicon glyphicon-volume-off control" aria-hidden="true" ng-show="player.isMute()"></span>
+					<span class="glyphicon glyphicon-volume-down control" aria-hidden="true" ng-hide="player.isMute()" ng-click="player.lower()"></span>
+					<span class="range control {{color}}"><input type="range" min="0" max="100" step="5" ng-model="player.volume"/></span>
+					<span class="glyphicon glyphicon-volume-up control" aria-hidden="true" ng-click="player.higher()"></span>
+
+				</div>
+			</span>
+
+			<span class="hidden-xs col-sm-6 col-md-8 player-progress">
+
+			</span>
+
+			<span class="col-xs-6 col-sm-3 col-md-2 player-timer">
+
+			</span>
+		</div>
+	</div>
+</div>

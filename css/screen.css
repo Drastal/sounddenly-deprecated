@@ -71,6 +71,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 -------------------------------------------------------------------------- */
 /*	Colors
 -------------------------------------------------------------------------- */
+/*	Range
+-------------------------------------------------------------------------- */
 /* line 1, ../sass/components/_main.scss */
 html, body {
   font: 100% "Junction-rg", sans-serif !important;
@@ -80,12 +82,208 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: #0b0d0d;
-  color: #d9c4b8;
+  color: #ecf0f1;
 }
 
 /* line 14, ../sass/components/_main.scss */
 h1 {
   font-family: sofiaregular, sans-serif !important;
+}
+
+/* line 18, ../sass/components/_main.scss */
+.range {
+  display: inline-block;
+  width: 80px;
+}
+/* line 40, ../sass/components/_main.scss */
+.range input[type=range] {
+  -webkit-appearance: none;
+  margin: 8px 0;
+  width: 100%;
+}
+/* line 44, ../sass/components/_main.scss */
+.range input[type=range]:focus {
+  outline: none;
+}
+/* line 47, ../sass/components/_main.scss */
+.range input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  background: #39444e;
+  border-radius: 5px;
+  border: 0px solid black;
+}
+/* line 54, ../sass/components/_main.scss */
+.range input[type=range]::-webkit-slider-thumb {
+  -webkit-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  -moz-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  border: 0px solid #1abc9c;
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  background: #1abc9c;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+}
+/* line 59, ../sass/components/_main.scss */
+.range input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #43505d;
+}
+/* line 62, ../sass/components/_main.scss */
+.range input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  background: #39444e;
+  border-radius: 5px;
+  border: 0px solid black;
+}
+/* line 69, ../sass/components/_main.scss */
+.range input[type=range]::-moz-range-thumb {
+  -webkit-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  -moz-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  border: 0px solid #1abc9c;
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  background: #1abc9c;
+  cursor: pointer;
+}
+/* line 72, ../sass/components/_main.scss */
+.range input[type=range]::-ms-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+/* line 79, ../sass/components/_main.scss */
+.range input[type=range]::-ms-fill-lower {
+  background: #2e3740;
+  border: 0px solid black;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+}
+/* line 85, ../sass/components/_main.scss */
+.range input[type=range]::-ms-fill-upper {
+  background: #39444e;
+  border: 0px solid black;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+}
+/* line 91, ../sass/components/_main.scss */
+.range input[type=range]::-ms-thumb {
+  -webkit-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  -moz-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  border: 0px solid #1abc9c;
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  background: #1abc9c;
+  cursor: pointer;
+}
+/* line 94, ../sass/components/_main.scss */
+.range input[type=range]:focus::-ms-fill-lower {
+  background: #39444e;
+}
+/* line 97, ../sass/components/_main.scss */
+.range input[type=range]:focus::-ms-fill-upper {
+  background: #43505d;
+}
+
+/* line 104, ../sass/components/_main.scss */
+.range.red input[type=range]::-webkit-slider-thumb {
+  background: #c0392b;
+}
+/* line 107, ../sass/components/_main.scss */
+.range.red input[type=range]::-moz-range-thumb {
+  background: #c0392b;
+}
+/* line 110, ../sass/components/_main.scss */
+.range.red input[type=range]::-ms-thumb {
+  background: #c0392b;
+}
+
+/* line 116, ../sass/components/_main.scss */
+.range.orange input[type=range]::-webkit-slider-thumb {
+  background: #d35400;
+}
+/* line 119, ../sass/components/_main.scss */
+.range.orange input[type=range]::-moz-range-thumb {
+  background: #d35400;
+}
+/* line 122, ../sass/components/_main.scss */
+.range.orange input[type=range]::-ms-thumb {
+  background: #d35400;
+}
+
+/* line 128, ../sass/components/_main.scss */
+.range.orange input[type=range]::-webkit-slider-thumb {
+  background: #d35400;
+}
+/* line 131, ../sass/components/_main.scss */
+.range.orange input[type=range]::-moz-range-thumb {
+  background: #d35400;
+}
+/* line 134, ../sass/components/_main.scss */
+.range.orange input[type=range]::-ms-thumb {
+  background: #d35400;
+}
+
+/* line 140, ../sass/components/_main.scss */
+.range.green input[type=range]::-webkit-slider-thumb {
+  background: #27ae60;
+}
+/* line 143, ../sass/components/_main.scss */
+.range.green input[type=range]::-moz-range-thumb {
+  background: #27ae60;
+}
+/* line 146, ../sass/components/_main.scss */
+.range.green input[type=range]::-ms-thumb {
+  background: #27ae60;
+}
+
+/* line 152, ../sass/components/_main.scss */
+.range.violet input[type=range]::-webkit-slider-thumb {
+  background: #8e44ad;
+}
+/* line 155, ../sass/components/_main.scss */
+.range.violet input[type=range]::-moz-range-thumb {
+  background: #8e44ad;
+}
+/* line 158, ../sass/components/_main.scss */
+.range.violet input[type=range]::-ms-thumb {
+  background: #8e44ad;
+}
+
+/* line 164, ../sass/components/_main.scss */
+.range.blue input[type=range]::-webkit-slider-thumb {
+  background: #2980b9;
+}
+/* line 167, ../sass/components/_main.scss */
+.range.blue input[type=range]::-moz-range-thumb {
+  background: #2980b9;
+}
+/* line 170, ../sass/components/_main.scss */
+.range.blue input[type=range]::-ms-thumb {
+  background: #2980b9;
 }
 
 /* line 3, ../sass/components/_header.scss */
@@ -95,8 +293,28 @@ header .header-options {
 /* line 7, ../sass/components/_header.scss */
 header .file-browse {
   width: 300px !important;
-  background-color: #208c81;
-  color: #d9c4b8;
+  background-color: #1abc9c;
+  color: #ecf0f1;
+}
+/* line 13, ../sass/components/_header.scss */
+header .file-browse.red {
+  background-color: #c0392b;
+}
+/* line 17, ../sass/components/_header.scss */
+header .file-browse.orange {
+  background-color: #d35400;
+}
+/* line 21, ../sass/components/_header.scss */
+header .file-browse.green {
+  background-color: #27ae60;
+}
+/* line 25, ../sass/components/_header.scss */
+header .file-browse.violet {
+  background-color: #8e44ad;
+}
+/* line 29, ../sass/components/_header.scss */
+header .file-browse.blue {
+  background-color: #2980b9;
 }
 
 /* line 1, ../sass/components/_snap.scss */
@@ -108,11 +326,68 @@ header .file-browse {
   left: 0;
   min-height: 100%;
   background-color: #0b0d0d;
-  background-image: linear-gradient(120deg, #0b0d0d, #124e48, #0b0d0d);
+  background-image: linear-gradient(120deg, #0b0d0d, #117964, #0b0d0d);
   z-index: 2;
 }
 
 /* line 15, ../sass/components/_snap.scss */
+.snap-content.light {
+  background-color: #ecf0f1;
+  background-image: linear-gradient(120deg, #ecf0f1, #c5f7ed, #ecf0f1);
+  color: #0b0d0d;
+}
+
+/* line 22, ../sass/components/_snap.scss */
+.snap-content.light.red {
+  background-image: linear-gradient(120deg, #ecf0f1, #f7ddda, #ecf0f1);
+}
+
+/* line 25, ../sass/components/_snap.scss */
+.snap-content.light.orange {
+  background-image: linear-gradient(120deg, #ecf0f1, #ffd5ba, #ecf0f1);
+}
+
+/* line 28, ../sass/components/_snap.scss */
+.snap-content.light.green {
+  background-image: linear-gradient(120deg, #ecf0f1, #c8f3da, #ecf0f1);
+}
+
+/* line 31, ../sass/components/_snap.scss */
+.snap-content.light.violet {
+  background-image: linear-gradient(120deg, #ecf0f1, #e4d0ed, #ecf0f1);
+}
+
+/* line 34, ../sass/components/_snap.scss */
+.snap-content.light.blue {
+  background-image: linear-gradient(120deg, #ecf0f1, #d2e7f5, #ecf0f1);
+}
+
+/* line 38, ../sass/components/_snap.scss */
+.snap-content.dark.red {
+  background-image: linear-gradient(120deg, #0b0d0d, #81261d, #0b0d0d);
+}
+
+/* line 41, ../sass/components/_snap.scss */
+.snap-content.dark.orange {
+  background-image: linear-gradient(120deg, #0b0d0d, #863600, #0b0d0d);
+}
+
+/* line 44, ../sass/components/_snap.scss */
+.snap-content.dark.green {
+  background-image: linear-gradient(120deg, #0b0d0d, #19703e, #0b0d0d);
+}
+
+/* line 47, ../sass/components/_snap.scss */
+.snap-content.dark.violet {
+  background-image: linear-gradient(120deg, #0b0d0d, #522764, #0b0d0d);
+}
+
+/* line 50, ../sass/components/_snap.scss */
+.snap-content.dark.blue {
+  background-image: linear-gradient(120deg, #0b0d0d, #1b557a, #0b0d0d);
+}
+
+/* line 54, ../sass/components/_snap.scss */
 .snap-drawers {
   position: absolute;
   top: 0;
@@ -121,28 +396,88 @@ header .file-browse {
   left: 0;
   z-index: 1;
 }
-/* line 24, ../sass/components/_snap.scss */
+/* line 63, ../sass/components/_snap.scss */
 .snap-drawers .snap-drawers--left {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   width: 266px;
-  padding: 10px;
   z-index: 1;
 }
-/* line 36, ../sass/components/_snap.scss */
+/* line 74, ../sass/components/_snap.scss */
 .snap-drawers .snap-drawers--right {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: 266px;
-  padding: 10px;
   z-index: 1;
 }
 
-/* line 1, ../sass/components/_console.scss */
-.visualizer {
+/* line 1, ../sass/components/_mixer.scss */
+.mixer-tool {
+  margin-bottom: 12px;
   background-color: #4e5d6c;
+  color: #ecf0f1;
+}
+
+/* line 9, ../sass/components/_mixer.scss */
+.player .player-controls {
+  padding: 12px 0;
+  text-align: center;
+}
+/* line 13, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-play {
+  font-size: 25px;
+}
+/* line 16, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-play .control {
+  padding: 6px;
+  vertical-align: middle;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+/* line 25, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-play .glyphicon-play, .player .player-controls .player-controls-play .glyphicon-pause {
+  padding: 0.3em;
+  font-size: 1.7em;
+  border: solid 2px #ecf0f1;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
+}
+/* line 33, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-play .glyphicon-pause {
+  display: none;
+}
+/* line 38, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-volume {
+  font-size: 18px;
+}
+/* line 41, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-volume .control {
+  padding-top: 6px;
+  vertical-align: middle;
+  cursor: pointer;
+  opacity: 0.5;
+}
+/* line 53, ../sass/components/_mixer.scss */
+.player .player-controls.active .player-controls-play .control, .player .player-controls.active .player-controls-volume .control {
+  cursor: pointer;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  -o-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+/* line 60, ../sass/components/_mixer.scss */
+.player .player-controls.active .player-controls-play .glyphicon-play, .player .player-controls.active .player-controls-volume .glyphicon-play {
+  display: none;
+}
+/* line 64, ../sass/components/_mixer.scss */
+.player .player-controls.active .player-controls-play .glyphicon-pause, .player .player-controls.active .player-controls-volume .glyphicon-pause {
+  display: inline-block;
 }

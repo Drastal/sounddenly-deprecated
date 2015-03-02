@@ -7,9 +7,48 @@
 	min-height: 100%;
 
 	background-color: $color-bg-dk;
-	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-dk, 15), $color-bg-dk));
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-turquoise, 15), $color-bg-dk));
 
 	z-index: 2;
+}
+
+.snap-content.light {
+	background-color: $color-bg-lg;
+	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-turquoise, 45), $color-bg-lg));
+
+    color: $color-bg-dk;
+}
+
+.snap-content.light.red {
+	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-red, 45), $color-bg-lg));
+}
+.snap-content.light.orange {
+	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-orange, 45), $color-bg-lg));
+}
+.snap-content.light.green {
+	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-green, 45), $color-bg-lg));
+}
+.snap-content.light.violet {
+	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-violet, 40), $color-bg-lg));
+}
+.snap-content.light.blue {
+	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-blue, 45), $color-bg-lg));
+}
+
+.snap-content.dark.red {
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-red, 15), $color-bg-dk));
+}
+.snap-content.dark.orange {
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-orange, 15), $color-bg-dk));
+}
+.snap-content.dark.green {
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-green, 15), $color-bg-dk));
+}
+.snap-content.dark.violet {
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-violet, 20), $color-bg-dk));
+}
+.snap-content.dark.blue {
+	background-image: -svg(linear-gradient(120deg, $color-bg-dk, darken($color-acc-blue, 15), $color-bg-dk));
 }
 
 .snap-drawers {
@@ -28,7 +67,6 @@
 		left: 0;
 
 		width: 266px;
-		padding: 10px;
 
 		z-index: 1;
 	}
@@ -40,7 +78,6 @@
 		bottom: 0;
 
 		width: 266px;
-		padding: 10px;
 
 		z-index: 1;
 	}

@@ -13,6 +13,35 @@ $line-height: ($font-size * 10 / 6);
 
 $color-bg-dk: #0B0D0D;
 $color-bg-md: #4e5d6c;
-$color-bg-lg: #D9C4B8;
-$color-acc-lg: #2DA69A;
-$color-acc-dk: #208C81;
+$color-bg-lg: #ecf0f1;
+
+$color-acc-turquoise: #1abc9c;
+$color-acc-orange: #d35400;
+$color-acc-blue: #2980b9;
+$color-acc-green: #27ae60;
+$color-acc-violet: #8e44ad;
+$color-acc-red: #c0392b;
+
+
+/*	Range
+-------------------------------------------------------------------------- */
+
+$track-color: darken($color-bg-md, 10);
+$thumb-color: $color-acc-turquoise;
+$thumb-radius: 16px;
+$thumb-height: 16px;
+$thumb-width: 16px;
+$thumb-shadow-size: 1px;
+$thumb-shadow-blur: 1px;
+$thumb-shadow-color: #111;
+$thumb-border-width: 0px;
+$thumb-border-color: $color-acc-turquoise;
+$track-width: 100%;
+$track-height: 2px;
+$track-shadow-size: 0px;
+$track-shadow-blur: 0px;
+$track-shadow-color: #222;
+$track-border-width: 0px;
+$track-border-color: black;
+$track-radius: 5px;
+$contrast: 5%;
