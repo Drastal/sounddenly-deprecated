@@ -7,14 +7,13 @@ angular.module('sounddenly.services', [])
 	* Angular services
 	**/
 	.service('webAudioService', function (soundPlayerService) {
-		var audioBuffer;
 		var sourceNode;
 		var gainNode;
 		var context = new AudioContext();
 
-		this.setupAudioNodes = function() {
+		this.setupAudioNodes = function(audioSource) {
 		    // Create nodes
-		    sourceNode = context.createBufferSource();
+		    sourceNode = context.createMediaElementSource(audioSource);
 		    gainNode = context.createGain();
 
 		    // Connect nodes
@@ -25,30 +24,8 @@ angular.module('sounddenly.services', [])
 		    console.log("Audio Nodes setup");
 		}
 
-		// load the specified sound
-		this.loadSound = function(url) {
-		    var request = new XMLHttpRequest();
-		    request.open('GET', url, true);
-		    request.responseType = 'arraybuffer';
-
-		    // When loaded decode the data
-		    request.onload = function() {
-
-		        // decode the data asynchronously
-		        context.decodeAudioData(request.response, function(buffer) {
-		            // when the audio is decoded play the sound
-		            soundPlayerService.play(sourceNode, buffer);
-		        }, function(e) {
-				    console.log(e);
-				})
-		    }
-		    request.send();
-
-		    console.log("Sound loaded");
-		}
-
-		// load the specified sound
 		this.setVolume = function(volume) {
+			//Set the volume value. Should be finite and between 0 and 1
 			gainNode.gain.value = volume;
 		}
 	})

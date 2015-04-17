@@ -40,16 +40,18 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 	})
 
 	.controller('PlayerCtrl', function (webAudioService, soundPlayerService, localStorageService, $scope) {
-		webAudioService.setupAudioNodes();
-		webAudioService.loadSound("sounds/loop.mp3");
+		var audioSource = document.querySelector('audio');
 
-		this.playing = false;
+		webAudioService.setupAudioNodes(audioSource);
+
+		$scope.playing = false;
 
 		// Let's apply the previous volume value, or set a new one
 		$scope.volume = soundPlayerService.isVolume(localStorageService.get('playerVolume')) ? localStorageService.get('playerVolume') : 70;
 
 		this.play = function(){
-			this.playing = !this.playing;
+			audioSource.paused ? audioSource.play() : audioSource.pause();
+			$scope.playing = !$scope.playing;
 		};
 
 		this.isMute = function(){
@@ -74,10 +76,15 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
 		$scope.$watch('volume', function(newValue, oldValue) {
 				// Let's use an x*x curve (x-squared) since simple linear (x) does not sound as good.
-				var volume = Math.pow((parseInt(newValue)/100), 2);
+				var volume = Math.round(Math.pow((parseInt(newValue)/100), 2) * 100) / 100;
 
 				webAudioService.setVolume(volume);
 				localStorageService.set('playerVolume', newValue); //Store the volume in localStorage
             }
         );
+
+        audioSource.addEventListener("ended", function() {
+        	$scope.playing = !$scope.playing;
+        	$scope.$apply();
+        });
 	});
