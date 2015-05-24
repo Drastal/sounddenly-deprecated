@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,46 +24,46 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+/* line 116, ../../../../Tools/Ruby/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
@@ -81,7 +81,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #0b0d0d;
+  background-color: #0B0D0D;
   color: #ecf0f1;
 }
 
@@ -110,18 +110,18 @@ h1 {
   width: 100%;
   height: 2px;
   cursor: pointer;
-  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  -webkit-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
   background: #39444e;
   border-radius: 5px;
   border: 0px solid black;
 }
 /* line 54, ../sass/components/_main.scss */
 .range input[type=range]::-webkit-slider-thumb {
-  -webkit-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-  -moz-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-  box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  -moz-box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  -webkit-box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
   border: 0px solid #1abc9c;
   height: 16px;
   width: 16px;
@@ -140,18 +140,18 @@ h1 {
   width: 100%;
   height: 2px;
   cursor: pointer;
-  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  -webkit-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
   background: #39444e;
   border-radius: 5px;
   border: 0px solid black;
 }
 /* line 69, ../sass/components/_main.scss */
 .range input[type=range]::-moz-range-thumb {
-  -webkit-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-  -moz-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-  box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  -moz-box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  -webkit-box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
   border: 0px solid #1abc9c;
   height: 16px;
   width: 16px;
@@ -174,24 +174,24 @@ h1 {
   background: #2e3740;
   border: 0px solid black;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  -webkit-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
 }
 /* line 85, ../sass/components/_main.scss */
 .range input[type=range]::-ms-fill-upper {
   background: #39444e;
   border: 0px solid black;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  -moz-box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
-  box-shadow: 0px 0px 0px #222222, 0px 0px 0px #2f2f2f;
+  -moz-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  -webkit-box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
+  box-shadow: 0px 0px 0px #222, 0px 0px 0px #2f2f2f;
 }
 /* line 91, ../sass/components/_main.scss */
 .range input[type=range]::-ms-thumb {
-  -webkit-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-  -moz-box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-  box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
+  -moz-box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  -webkit-box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
   border: 0px solid #1abc9c;
   height: 16px;
   width: 16px;
@@ -325,66 +325,66 @@ header .file-browse.blue {
   bottom: 0;
   left: 0;
   min-height: 100%;
-  background-color: #0b0d0d;
-  background-image: linear-gradient(120deg, #0b0d0d, #117964, #0b0d0d);
+  background-color: #0B0D0D;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiMGQwZCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTE3OTY0Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGIwZDBkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
   z-index: 2;
 }
 
 /* line 15, ../sass/components/_snap.scss */
 .snap-content.light {
   background-color: #ecf0f1;
-  background-image: linear-gradient(120deg, #ecf0f1, #c5f7ed, #ecf0f1);
-  color: #0b0d0d;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjBmMSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjYzVmN2VkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWNmMGYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  color: #0B0D0D;
 }
 
 /* line 22, ../sass/components/_snap.scss */
 .snap-content.light.red {
-  background-image: linear-gradient(120deg, #ecf0f1, #f7ddda, #ecf0f1);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjBmMSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZjdkZGRhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWNmMGYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 25, ../sass/components/_snap.scss */
 .snap-content.light.orange {
-  background-image: linear-gradient(120deg, #ecf0f1, #ffd5ba, #ecf0f1);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjBmMSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZmZkNWJhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWNmMGYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 28, ../sass/components/_snap.scss */
 .snap-content.light.green {
-  background-image: linear-gradient(120deg, #ecf0f1, #c8f3da, #ecf0f1);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjBmMSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjYzhmM2RhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWNmMGYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 31, ../sass/components/_snap.scss */
 .snap-content.light.violet {
-  background-image: linear-gradient(120deg, #ecf0f1, #e4d0ed, #ecf0f1);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjBmMSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZTRkMGVkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWNmMGYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 34, ../sass/components/_snap.scss */
 .snap-content.light.blue {
-  background-image: linear-gradient(120deg, #ecf0f1, #d2e7f5, #ecf0f1);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjBmMSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZDJlN2Y1Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWNmMGYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 38, ../sass/components/_snap.scss */
 .snap-content.dark.red {
-  background-image: linear-gradient(120deg, #0b0d0d, #81261d, #0b0d0d);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiMGQwZCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODEyNjFkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGIwZDBkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 41, ../sass/components/_snap.scss */
 .snap-content.dark.orange {
-  background-image: linear-gradient(120deg, #0b0d0d, #863600, #0b0d0d);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiMGQwZCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODYzNjAwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGIwZDBkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 44, ../sass/components/_snap.scss */
 .snap-content.dark.green {
-  background-image: linear-gradient(120deg, #0b0d0d, #19703e, #0b0d0d);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiMGQwZCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTk3MDNlIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGIwZDBkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 47, ../sass/components/_snap.scss */
 .snap-content.dark.violet {
-  background-image: linear-gradient(120deg, #0b0d0d, #522764, #0b0d0d);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiMGQwZCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNTIyNzY0Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGIwZDBkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 50, ../sass/components/_snap.scss */
 .snap-content.dark.blue {
-  background-image: linear-gradient(120deg, #0b0d0d, #1b557a, #0b0d0d);
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0wLjA5MTUwNiIgeTE9IjAuMTU4NDk0IiB4Mj0iMS4wOTE1MDYiIHkyPSIwLjg0MTUwNiI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiMGQwZCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMWI1NTdhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGIwZDBkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 }
 
 /* line 54, ../sass/components/_snap.scss */
@@ -443,10 +443,8 @@ header .file-browse.blue {
   padding: 0.3em;
   font-size: 1.7em;
   border: solid 2px #ecf0f1;
-  -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
-  -ms-border-radius: 2em;
-  -o-border-radius: 2em;
+  -webkit-border-radius: 2em;
   border-radius: 2em;
 }
 /* line 33, ../sass/components/_mixer.scss */
@@ -468,9 +466,9 @@ header .file-browse.blue {
 .player .player-controls.active .player-controls-play .control, .player .player-controls.active .player-controls-volume .control {
   cursor: pointer;
   opacity: 1;
-  -webkit-transition: opacity 0.25s;
   -moz-transition: opacity 0.25s;
   -o-transition: opacity 0.25s;
+  -webkit-transition: opacity 0.25s;
   transition: opacity 0.25s;
 }
 /* line 60, ../sass/components/_mixer.scss */
@@ -480,4 +478,13 @@ header .file-browse.blue {
 /* line 64, ../sass/components/_mixer.scss */
 .player .player-controls.active .player-controls-play .glyphicon-pause, .player .player-controls.active .player-controls-volume .glyphicon-pause {
   display: inline-block;
+}
+
+/* line 79, ../sass/components/_mixer.scss */
+.analyser {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-height: 200px;
 }

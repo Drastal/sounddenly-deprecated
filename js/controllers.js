@@ -7,7 +7,6 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 	* Home controller
 	**/
 	.controller('HomeCtrl', function () {
-
 	})
 
 	.controller('AppSettingsCtrl', function ($rootScope, localStorageService) {
@@ -75,16 +74,27 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 		}
 
 		$scope.$watch('volume', function(newValue, oldValue) {
-				// Let's use an x*x curve (x-squared) since simple linear (x) does not sound as good.
-				var volume = Math.round(Math.pow((parseInt(newValue)/100), 2) * 100) / 100;
+			// Let's use an x*x curve (x-squared) since simple linear (x) does not sound as good.
+			var volume = Math.round(Math.pow((parseInt(newValue)/100), 2) * 100) / 100;
 
-				webAudioService.setVolume(volume);
-				localStorageService.set('playerVolume', newValue); //Store the volume in localStorage
-            }
-        );
+			webAudioService.setVolume(volume);
+			localStorageService.set('playerVolume', newValue); //Store the volume in localStorage
+        });
 
         audioSource.addEventListener("ended", function() {
         	$scope.playing = !$scope.playing;
         	$scope.$apply();
+        });
+	})
+
+	.controller('AnalyserCtrl', function (webAudioService, $scope, $rootScope) {
+		webAudioService.setCanvasCtx(document.querySelector('canvas.analyser'));
+
+		window.addEventListener('resize', webAudioService.resizeCanvas, false);
+		webAudioService.resizeCanvas();
+
+		$scope.$watch('color', function(newValue, oldValue) {
+			console.log('color updated');
+			webAudioService.setupAnalyserGradient(newValue);
         });
 	});
