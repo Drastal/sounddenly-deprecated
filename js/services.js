@@ -53,13 +53,13 @@ angular.module('sounddenly.services', [])
 		}
 
         this.resizeCanvas = function() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.width/3;
-                canvasWidth = canvas.width;
-                canvasHeight = canvas.height;
-    			canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.width/4;
+            canvasWidth = canvas.width;
+            canvasHeight = canvas.height;
+			canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-                drawAnalyser();
+            drawAnalyser();
         }
 
         var drawAnalyser = function() {
