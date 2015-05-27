@@ -30,3 +30,9 @@ header {
 		background-color: $color-acc-blue;
 	}
 }
+
+@media screen and (max-width: 480px) {
+	h1 {
+		font-size: 30px !important;
+	}
+}
