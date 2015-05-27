@@ -17,7 +17,7 @@ h1 {
 
 .range {
 	display: inline-block;
-	width: 80px;
+	width: 100px;
 
     @mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
         @include box-shadow($shadow-size $shadow-size $shadow-blur $shadow-color, 0px 0px $shadow-size lighten($shadow-color, 5%));

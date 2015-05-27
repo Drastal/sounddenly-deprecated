@@ -89,12 +89,9 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
 	.controller('AnalyserCtrl', function (webAudioService, $scope, $rootScope) {
 		webAudioService.setCanvasCtx(document.querySelector('canvas.analyser'));
-
-		window.addEventListener('resize', webAudioService.resizeCanvas, false);
 		webAudioService.resizeCanvas();
 
 		$scope.$watch('color', function(newValue, oldValue) {
-			console.log('color updated');
 			webAudioService.setupAnalyserGradient(newValue);
         });
 	});
