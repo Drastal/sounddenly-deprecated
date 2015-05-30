@@ -10,6 +10,7 @@ angular.module('sounddenly.services', [])
 		var sourceNode;
 		var gainNode;
 		var analyserNode;
+		var filterNode;
 		var audioCtx = new AudioContext();
 
 		var bufferLength;
@@ -27,6 +28,7 @@ angular.module('sounddenly.services', [])
 		    sourceNode = audioCtx.createMediaElementSource(audioSource);
 		    gainNode = audioCtx.createGain();
         	analyserNode = audioCtx.createAnalyser();
+        	filterNode = audioCtx.createBiquadFilter();
 
 		    // setup a analyzer
 			analyserNode.fftSize = 256;
@@ -35,6 +37,7 @@ angular.module('sounddenly.services', [])
 
 		    // Connect nodes
 		    sourceNode.connect(gainNode);
+		    //filterNode.connect(gainNode);
 		    gainNode.connect(analyserNode);
 		    analyserNode.connect(audioCtx.destination);
 		    sourceNode.loop = false;
@@ -45,6 +48,26 @@ angular.module('sounddenly.services', [])
 		this.setVolume = function(volume) {
 			//Set the volume value. Should be finite and between 0 and 1
 			gainNode.gain.value = volume;
+		}
+
+		this.setFilter = function(connectFilter) {
+			if(connectFilter){
+				sourceNode.connect(filterNode);
+				filterNode.connect(gainNode);
+			}
+			else{
+				sourceNode.disconnect(0);
+				filterNode.disconnect(0);
+				sourceNode.connect(gainNode);
+			}
+		}
+
+		this.setFilterType = function(filterType) {
+			filterNode.type = filterType;
+		}
+
+		this.setFilterFrequency = function(filterFrequencies) {
+
 		}
 
 		this.setCanvasCtx = function(analyserCanvas) {
@@ -68,7 +91,7 @@ angular.module('sounddenly.services', [])
 
     		canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-			var barWidth = (canvasWidth / bufferLength) * 1.5;
+			var barWidth = (canvasWidth / bufferLength) * 1.8;
 			var barHeight;
 			var x = 0;
 

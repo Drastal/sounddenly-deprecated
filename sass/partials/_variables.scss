@@ -23,25 +23,7 @@ $color-acc-violet: #8e44ad;
 $color-acc-red: #c0392b;
 
 
-/*	Range
+/*	Slider
 -------------------------------------------------------------------------- */
 
-$track-color: darken($color-bg-md, 10);
-$thumb-color: $color-acc-turquoise;
-$thumb-radius: 20px;
-$thumb-height: 20px;
-$thumb-width: 20px;
-$thumb-shadow-size: 1px;
-$thumb-shadow-blur: 1px;
-$thumb-shadow-color: #111;
-$thumb-border-width: 0px;
-$thumb-border-color: $color-acc-turquoise;
-$track-width: 100%;
-$track-height: 2px;
-$track-shadow-size: 0px;
-$track-shadow-blur: 0px;
-$track-shadow-color: #222;
-$track-border-width: 0px;
-$track-border-color: black;
-$track-radius: 5px;
-$contrast: 5%;
+$pointer-size: 20px;

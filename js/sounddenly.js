@@ -7,7 +7,8 @@ angular.module('sounddenly', [
 	'sounddenly.controllers',
 	'ngSanitize',
 	'LocalStorageModule',
-	'snap'
+	'snap',
+	'vr.directives.slider'
 	])
 
     .config(['$routeProvider', function($routeProvider) {

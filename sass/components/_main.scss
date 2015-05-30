@@ -15,159 +15,110 @@ h1 {
 	font-family: sofiaregular, sans-serif !important;
 }
 
-.range {
-	display: inline-block;
-	width: 100px;
 
-    @mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
-        @include box-shadow($shadow-size $shadow-size $shadow-blur $shadow-color, 0px 0px $shadow-size lighten($shadow-color, 5%));
+/*    Slider
+    -------------------------------------------------------------------------- */
+
+slider {
+    display: inline-block;
+    position: relative;
+    height: $pointer-size;
+    margin: 10px 0;
+    vertical-align: middle;
+
+    span {
+        white-space: nowrap;
+        position: absolute;
+        display: inline-block;
     }
-    @mixin track() {
-        width: $track-width;
-        height: $track-height;
+
+    span.base {
+        width: 100%;
+        height: 100%;
+        padding: 0
+    }
+
+    span.bar {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        color: darken($color-bg-md, 15);
+        -webkit-border-radius: 1em/1em;
+        border-radius: 1em/1em;
+        -webkit-box-shadow: inset 1px 1px 5px;
+        box-shadow: inset 1px 1px 5px;
+    }
+
+    span.bar.selection {
+        width: 0%;
+        z-index: 1;
+        background-color: $color-acc-turquoise;
+        -webkit-box-shadow: none;
+        box-shadow: none
+    }
+
+    span.pointer {
         cursor: pointer;
-    }
-    @mixin thumb() {
-        @include shadow($thumb-shadow-size, $thumb-shadow-blur, $thumb-shadow-color);
-        border: $thumb-border-width solid $thumb-border-color;
-        height: $thumb-height;
-        width: $thumb-width;
-        border-radius: $thumb-radius;
-        background: $thumb-color;
-        cursor: pointer;
+        width: $pointer-size;
+        height: $pointer-size;
+        background-color: $color-acc-turquoise;
+        border: 1px solid #000;
+        z-index: 2;
+        -webkit-border-radius: 1em/1em;
+        border-radius: 1em/1em;
     }
 
-    input[type=range] {
-        -webkit-appearance: none;
-        margin: $thumb-height/2 0;
-        width: $track-width;
-        &:focus {
-            outline: none;
-        }
-        &::-webkit-slider-runnable-track {
-            @include track();
-            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-            background: $track-color;
-            border-radius: $track-radius;
-            border: $track-border-width solid $track-border-color;
-        }
-        &::-webkit-slider-thumb {
-            @include thumb();
-            -webkit-appearance: none;
-            margin-top: ((-$track-border-width * 2 + $track-height) / 2) - ($thumb-height / 2);
-        }
-        &:focus::-webkit-slider-runnable-track {
-            background: lighten($track-color, $contrast);
-        }
-        &::-moz-range-track {
-            @include track();
-            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-            background: $track-color;
-            border-radius: $track-radius;
-            border: $track-border-width solid $track-border-color;
-        }
-        &::-moz-range-thumb {
-            @include thumb();
-        }
-        &::-ms-track {
-            @include track();
-            background: transparent;
-            border-color: transparent;
-            border-width: $thumb-width 0;
-            color: transparent;
-        }
-        &::-ms-fill-lower {
-            background: darken($track-color, $contrast);
-            border: $track-border-width solid $track-border-color;
-            border-radius: $track-radius*2;
-            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-        }
-        &::-ms-fill-upper {
-            background: $track-color;
-            border: $track-border-width solid $track-border-color;
-            border-radius: $track-radius*2;
-            @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-        }
-        &::-ms-thumb {
-            @include thumb();
-        }
-        &:focus::-ms-fill-lower {
-            background: $track-color;
-        }
-        &:focus::-ms-fill-upper {
-            background: lighten($track-color, $contrast);
-        }
+    span.pointer:hover {
+        background-color: lighten($color-acc-turquoise, 10);
+    }
+
+    span.pointer.active {
+        background-color: lighten($color-acc-turquoise, 15);
+    }
+
+    span.bubble {
+        cursor: default;
+        top: -15px;
+        padding: 1px 3px;
+        font-size: .6em;
+        font-family: sans-serif;
+    }
+
+    span.bubble.selection {
+        top: 15px
+    }
+
+    span.bubble.limit {
+        color: #808080
     }
 }
 
-.range.red input[type=range]{
-	&::-webkit-slider-thumb {
-    	background: $color-acc-red;
-    }
-	&::-moz-range-thumb {
-    	background: $color-acc-red;
-    }
-	&::-ms-thumb {
-    	background: $color-acc-red;
-    }
+slider.orange {
+    span.pointer {background-color: $color-acc-orange;}
+    span.pointer:hover {background-color: lighten($color-acc-orange, 10);}
+    span.pointer.active {background-color: lighten($color-acc-orange, 15);}
 }
 
-.range.orange input[type=range]{
-	&::-webkit-slider-thumb {
-    	background: $color-acc-orange;
-    }
-	&::-moz-range-thumb {
-    	background: $color-acc-orange;
-    }
-	&::-ms-thumb {
-    	background: $color-acc-orange;
-    }
+slider.blue {
+    span.pointer {background-color: $color-acc-blue;}
+    span.pointer:hover {background-color: lighten($color-acc-blue, 10);}
+    span.pointer.active {background-color: lighten($color-acc-blue, 15);}
 }
 
-.range.orange input[type=range]{
-	&::-webkit-slider-thumb {
-    	background: $color-acc-orange;
-    }
-	&::-moz-range-thumb {
-    	background: $color-acc-orange;
-    }
-	&::-ms-thumb {
-    	background: $color-acc-orange;
-    }
+slider.green {
+    span.pointer {background-color: $color-acc-green;}
+    span.pointer:hover {background-color: lighten($color-acc-green, 10);}
+    span.pointer.active {background-color: lighten($color-acc-green, 15);}
 }
 
-.range.green input[type=range]{
-	&::-webkit-slider-thumb {
-    	background: $color-acc-green;
-    }
-	&::-moz-range-thumb {
-    	background: $color-acc-green;
-    }
-	&::-ms-thumb {
-    	background: $color-acc-green;
-    }
+slider.violet {
+    span.pointer {background-color: $color-acc-violet;}
+    span.pointer:hover {background-color: lighten($color-acc-violet, 10);}
+    span.pointer.active {background-color: lighten($color-acc-violet, 15);}
 }
 
-.range.violet input[type=range]{
-	&::-webkit-slider-thumb {
-    	background: $color-acc-violet;
-    }
-	&::-moz-range-thumb {
-    	background: $color-acc-violet;
-    }
-	&::-ms-thumb {
-    	background: $color-acc-violet;
-    }
-}
-
-.range.blue input[type=range]{
-	&::-webkit-slider-thumb {
-    	background: $color-acc-blue;
-    }
-	&::-moz-range-thumb {
-    	background: $color-acc-blue;
-    }
-	&::-ms-thumb {
-    	background: $color-acc-blue;
-    }
+slider.red {
+    span.pointer {background-color: $color-acc-red;}
+    span.pointer:hover {background-color: lighten($color-acc-red, 10);}
+    span.pointer.active {background-color: lighten($color-acc-red, 15);}
 }

@@ -44,6 +44,7 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 		webAudioService.setupAudioNodes(audioSource);
 
 		$scope.playing = false;
+		$scope.loaded = false;
 
 		// Let's apply the previous volume value, or set a new one
 		$scope.volume = soundPlayerService.isVolume(localStorageService.get('playerVolume')) ? localStorageService.get('playerVolume') : 70;
@@ -83,6 +84,11 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
         audioSource.addEventListener("ended", function() {
         	$scope.playing = !$scope.playing;
+        	$scope.$apply();
+        });
+
+        audioSource.addEventListener("canplay", function() {
+        	$scope.loaded = true;
         	$scope.$apply();
         });
 	})

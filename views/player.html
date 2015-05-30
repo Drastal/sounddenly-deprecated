@@ -1,7 +1,7 @@
 <div class="row" ng-controller="PlayerCtrl as player">
-	<div class="col-sm-12 player" data-snap-ignore="true">
+	<div class="col-sm-12 player">
 		<div class="row">
-			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': playing}">
+			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': loaded, 'playing': playing}">
 				<audio>
         			<source type="audio/mpeg" src="sounds/loop.mp3"/>
 					Your browser doesn't support <code>audio</code> element.
@@ -12,10 +12,10 @@
 					<span class="glyphicon glyphicon-pause control" aria-hidden="true" ng-click="player.play()"></span>
 					<span class="glyphicon glyphicon-forward control" aria-hidden="true"></span>
 				</div>
-				<div class="player-controls-volume">
-					<span class="glyphicon glyphicon-volume-off control" aria-hidden="true" ng-show="player.isMute()"></span>
-					<span class="glyphicon glyphicon-volume-down control" aria-hidden="true" ng-hide="player.isMute()" ng-click="player.lower()"></span>
-					<span class="range control {{color}}"><input type="range" min="0" max="100" step="2" ng-model="volume"/></span>
+				<div class="player-controls-volume" data-snap-ignore="true">
+					<!-- <span class="glyphicon glyphicon-volume-off control" aria-hidden="true" ng-show="player.isMute()"></span> -->
+					<span class="glyphicon glyphicon-volume-down control" aria-hidden="true" ng-click="player.lower()"></span>
+					<slider class="player-volume control {{color}}" floor="0" ceiling="100" step="2" precision="0" ng-model="volume"></slider>
 					<span class="glyphicon glyphicon-volume-up control" aria-hidden="true" ng-click="player.higher()"></span>
 
 				</div>
