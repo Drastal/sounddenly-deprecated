@@ -1,7 +1,7 @@
 <div class="row" ng-controller="PlayerCtrl as player">
 	<div class="col-sm-12 player">
 		<div class="row">
-			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': loaded, 'playing': playing}">
+			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': loaded, 'playing': playing}" data-snap-ignore="true">
 				<audio>
         			<source type="audio/mpeg" src="sounds/loop.mp3"/>
 					Your browser doesn't support <code>audio</code> element.
@@ -12,17 +12,15 @@
 					<span class="glyphicon glyphicon-pause control" aria-hidden="true" ng-click="player.play()"></span>
 					<span class="glyphicon glyphicon-forward control" aria-hidden="true"></span>
 				</div>
-				<div class="player-controls-volume" data-snap-ignore="true">
-					<!-- <span class="glyphicon glyphicon-volume-off control" aria-hidden="true" ng-show="player.isMute()"></span> -->
+				<div class="player-controls-volume">
 					<span class="glyphicon glyphicon-volume-down control" aria-hidden="true" ng-click="player.lower()"></span>
-					<slider class="player-volume control {{color}}" floor="0" ceiling="100" step="2" precision="0" ng-model="volume"></slider>
+					<slider class="player-volume control {{color}}" ng-model="volume" min="0" step="2" max="100"></slider>
 					<span class="glyphicon glyphicon-volume-up control" aria-hidden="true" ng-click="player.higher()"></span>
-
 				</div>
 			</span>
 
 			<span class="hidden-xs col-sm-6 col-md-8 player-progress">
-
+				<slider id="songSlider" class="player-progress-slider {{color}}" ng-model="currentTime" min="0" max="duration" tooltip=""></slider>
 			</span>
 
 			<span class="col-xs-6 col-sm-3 col-md-2 player-timer">

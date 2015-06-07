@@ -8,7 +8,7 @@ angular.module('sounddenly', [
 	'ngSanitize',
 	'LocalStorageModule',
 	'snap',
-	'vr.directives.slider'
+	'ui.bootstrap-slider'
 	])
 
     .config(['$routeProvider', function($routeProvider) {

@@ -1,4 +1,4 @@
-<div snap-content class="snap-content {{background}} {{color}}">
+<div snap-content snap-opt-disable="'left'" class="snap-content {{background}} {{color}}">
 	<header ng-include src="'views/header.html'"></header>
 
 	<div ng-include src="'views/mixer.html'"></div>
@@ -6,26 +6,17 @@
 	<footer ng-include src="'views/footer.html'"></footer>
 </div>
 
-<div snap-drawers class="snap-drawers">
-	<div snap-drawer class="snap-drawers--left container-fluid">
-		<div class="row">
-			<h2 class="col-sm-12">Tuning</h2>
-			<h4 class="col-sm-12">Quick settings</h4>
-			<h4 class="col-sm-12">Filters</h4>
+<div snap-drawer="right" class="snap-drawers--right container-fluid" ng-controller="AppSettingsCtrl as appSettings">
+	<div class="row">
+		<h2 class="col-sm-12">Settings</h2>
+        <div class="form-group col-sm-12">
+            <label>Background</label><br/>
+		    <select class="form-control" ng-model="appSettings.backgroundColor" ng-options="backgroundColor for backgroundColor in appSettings.backgroundColors" ng-click="appSettings.update()"></select>
 		</div>
-	</div>
 
-	<div snap-drawer="right" class="snap-drawers--right container-fluid" ng-controller="AppSettingsCtrl as appSettings">
-		<div class="row">
-			<h2 class="col-sm-12">Settings</h2>
-	        <div class="form-group col-sm-12">
-	            <label>Background</label><br/>
-			    <select class="form-control" ng-model="appSettings.backgroundColor" ng-options="backgroundColor for backgroundColor in appSettings.backgroundColors" ng-click="appSettings.update()"></select>
-			</div>
-	        <div class="form-group col-sm-12">
-	            <label>Accent color</label><br/>
-			    <select class="form-control" ng-model="appSettings.accentColor" ng-options="accentColor for accentColor in appSettings.accentColors" ng-click="appSettings.update()"></select>
-			</div>
+        <div class="form-group col-sm-12">
+            <label>Accent color</label><br/>
+		    <select class="form-control" ng-model="appSettings.accentColor" ng-options="accentColor for accentColor in appSettings.accentColors" ng-click="appSettings.update()"></select>
 		</div>
 	</div>
 </div>

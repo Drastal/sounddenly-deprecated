@@ -46,6 +46,9 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 		$scope.playing = false;
 		$scope.loaded = false;
 
+		$scope.currentTime = 0;
+		$scope.duration = audioSource.duration;
+
 		// Let's apply the previous volume value, or set a new one
 		$scope.volume = soundPlayerService.isVolume(localStorageService.get('playerVolume')) ? localStorageService.get('playerVolume') : 70;
 
@@ -82,13 +85,37 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 			localStorageService.set('playerVolume', newValue); //Store the volume in localStorage
         });
 
-        audioSource.addEventListener("ended", function() {
+        audioSource.addEventListener('ended', function() {
         	$scope.playing = !$scope.playing;
         	$scope.$apply();
         });
 
-        audioSource.addEventListener("canplay", function() {
+        audioSource.addEventListener('canplay', function() {
         	$scope.loaded = true;
+        	$scope.$apply();
+        });
+
+        audioSource.addEventListener('waiting', function() {
+        	$scope.playing = false;
+        	$scope.loaded = false;
+        	$scope.$apply();
+        });
+
+        audioSource.addEventListener('playing', function() {
+        	$scope.playing = true;
+        	$scope.loaded = true;
+        	$scope.$apply();
+        });
+
+        audioSource.addEventListener('timeupdate', function() {
+        	//update current position in the slider
+        	$scope.currentTime = audioSource.currentTime;
+        	$scope.$apply();
+        });
+
+        audioSource.addEventListener('durationchange', function() {
+        	//update the song duration
+        	$scope.duration = audioSource.duration;
         	$scope.$apply();
         });
 	})
@@ -99,5 +126,39 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
 		$scope.$watch('color', function(newValue, oldValue) {
 			webAudioService.setupAnalyserGradient(newValue);
+        });
+	})
+
+	.controller('FilterCtrl', function (webAudioService, $scope) {
+		$scope.filterType = 'off';
+		$scope.frequencyLow;
+		$scope.frequencyHigh;
+		$scope.frequencyBand = [];
+
+		$scope.frequency = $scope.frequencyLow;
+		$scope.q;
+
+		$scope.setFilterType = function(type) {
+		    $scope.filterType = type;
+		};
+
+		$scope.isFilterType = function(type) {
+		    return type === $scope.filterType;
+		};
+
+		$scope.$watch('filterType', function(newValue, oldValue) {
+        });
+
+		$scope.$watch('frequencyLow', function(newValue, oldValue) {
+			$scope.frequency = $scope.frequencyLow;
+        });
+
+		$scope.$watch('frequencyHigh', function(newValue, oldValue) {
+			$scope.frequency = $scope.frequencyHigh;
+        });
+
+		$scope.$watch('frequencyBand', function(newValue, oldValue) {
+			$scope.frequency = ($scope.frequencyBand[0] + $scope.frequencyBand[1]) / 2;
+			$scope.q = $scope.frequencyBand[1] - $scope.frequencyBand[0];
         });
 	});

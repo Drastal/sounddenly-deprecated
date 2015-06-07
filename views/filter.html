@@ -1,0 +1,17 @@
+<div class="row" ng-controller="FilterCtrl as filter" data-snap-ignore="true">
+	<div class="col-sm-12  filter-type">
+		<label class="filter-type--title">Filters</label>
+	    <form class="btn-group {{color}}">
+		    <div class="btn btn-default" ng-class="{'active': isFilterType('off')}" ng-click="setFilterType('off')">Off</div>
+		    <div class="btn btn-default" ng-class="{'active': isFilterType('lowpass')}" ng-click="setFilterType('lowpass')">Lowpass</div>
+		    <div class="btn btn-default" ng-class="{'active': isFilterType('highpass')}" ng-click="setFilterType('highpass')">Highpass</div>
+		    <div class="btn btn-default" ng-class="{'active': isFilterType('bandpass')}" ng-click="setFilterType('bandpass')">Bandpass</div>
+	    </form>
+	</div>
+
+	<div class="col-sm-12 filter-range" ng-hide="filterType == 'off'">
+		<slider class="{{color}}" ng-model="frequencyLow" min="10" step="10" max="20000" ng-show="filterType == 'lowpass'"></slider>
+		<slider class="{{color}} {{filterType}}" ng-model="frequencyHigh" min="10" step="10" max="20000" ng-show="filterType == 'highpass'"></slider>
+		<slider class="{{color}}" range="true" ng-model="frequencyBand" min="10" step="10" max="20000" ng-show="filterType == 'bandpass'"></slider>
+	</div>
+</div>

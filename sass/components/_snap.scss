@@ -14,25 +14,25 @@
 
 .snap-content.light {
 	background-color: $color-bg-lg;
-	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-turquoise, 45), $color-bg-lg));
+	background-image: -svg(linear-gradient(60deg, lighten($color-acc-turquoise, 35), $color-bg-lg, lighten($color-acc-turquoise, 35)));
 
     color: $color-bg-dk;
 }
 
 .snap-content.light.red {
-	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-red, 45), $color-bg-lg));
+	background-image: -svg(linear-gradient(60deg, lighten($color-acc-red, 35), $color-bg-lg, lighten($color-acc-red, 35)));
 }
 .snap-content.light.orange {
-	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-orange, 45), $color-bg-lg));
+	background-image: -svg(linear-gradient(60deg, lighten($color-acc-orange, 35), $color-bg-lg, lighten($color-acc-orange, 35)));
 }
 .snap-content.light.green {
-	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-green, 45), $color-bg-lg));
+	background-image: -svg(linear-gradient(60deg, lighten($color-acc-green, 35), $color-bg-lg, lighten($color-acc-green, 35)));
 }
 .snap-content.light.violet {
-	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-violet, 40), $color-bg-lg));
+	background-image: -svg(linear-gradient(60deg, lighten($color-acc-violet, 35), $color-bg-lg, lighten($color-acc-violet, 35)));
 }
 .snap-content.light.blue {
-	background-image: -svg(linear-gradient(120deg, $color-bg-lg, lighten($color-acc-blue, 45), $color-bg-lg));
+	background-image: -svg(linear-gradient(60deg, lighten($color-acc-blue, 35), $color-bg-lg, lighten($color-acc-blue, 35)));
 }
 
 .snap-content.dark.red {
