@@ -20,11 +20,14 @@
 			</span>
 
 			<span class="hidden-xs col-sm-6 col-md-8 player-progress">
-				<slider id="songSlider" class="player-progress-slider {{color}}" ng-model="currentTime" min="0" max="duration" tooltip=""></slider>
+				<input id="songSlider" data-slider-id='songSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.0001" data-slider-value="0"/>
 			</span>
 
 			<span class="col-xs-6 col-sm-3 col-md-2 player-timer">
-
+				<div class="timer">
+					<div class="timer-current">{{currentTime}}</div>
+					<div class="timer-duration">{{durationTime}}</div>
+				</div>
 			</span>
 		</div>
 	</div>

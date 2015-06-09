@@ -609,11 +609,36 @@ footer .credits {
   height: 21.66667px;
 }
 /* line 127, ../sass/components/_mixer.scss */
-.player .player-progress .player-progress-slider {
+.player .player-progress #songSlider {
   margin-top: 50px;
 }
+/* line 133, ../sass/components/_mixer.scss */
+.player .player-timer {
+  text-align: center;
+}
+/* line 136, ../sass/components/_mixer.scss */
+.player .player-timer .timer {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: sans-serif;
+  font-size: 24px;
+}
+/* line 144, ../sass/components/_mixer.scss */
+.player .player-timer .timer-current, .player .player-timer .timer-duration {
+  padding: 10px;
+}
+/* line 148, ../sass/components/_mixer.scss */
+.player .player-timer .timer-current {
+  font-size: 140%;
+}
+/* line 152, ../sass/components/_mixer.scss */
+.player .player-timer .timer-duration {
+  width: 100%;
+  border-top: 1px solid #999;
+  color: #999;
+}
 
-/* line 138, ../sass/components/_mixer.scss */
+/* line 160, ../sass/components/_mixer.scss */
 .analyser {
   display: block;
   margin: 0;
@@ -623,49 +648,49 @@ footer .credits {
   max-height: 150px;
 }
 
-/* line 149, ../sass/components/_mixer.scss */
+/* line 171, ../sass/components/_mixer.scss */
 .filter-type .filter-type--title {
   margin-right: 8px;
   color: rgba(255, 255, 255, 0.4);
 }
-/* line 154, ../sass/components/_mixer.scss */
+/* line 176, ../sass/components/_mixer.scss */
 .filter-type .active {
   background-color: #1abc9c;
 }
-/* line 158, ../sass/components/_mixer.scss */
+/* line 180, ../sass/components/_mixer.scss */
 .filter-type .turquoise .active {
   background-color: #1abc9c;
 }
-/* line 159, ../sass/components/_mixer.scss */
+/* line 181, ../sass/components/_mixer.scss */
 .filter-type .green .active {
   background-color: #27ae60;
 }
-/* line 160, ../sass/components/_mixer.scss */
+/* line 182, ../sass/components/_mixer.scss */
 .filter-type .blue .active {
   background-color: #2980b9;
 }
-/* line 161, ../sass/components/_mixer.scss */
+/* line 183, ../sass/components/_mixer.scss */
 .filter-type .orange .active {
   background-color: #d35400;
 }
-/* line 162, ../sass/components/_mixer.scss */
+/* line 184, ../sass/components/_mixer.scss */
 .filter-type .red .active {
   background-color: #c0392b;
 }
-/* line 163, ../sass/components/_mixer.scss */
+/* line 185, ../sass/components/_mixer.scss */
 .filter-type .violet .active {
   background-color: #8e44ad;
 }
 
-/* line 166, ../sass/components/_mixer.scss */
+/* line 188, ../sass/components/_mixer.scss */
 .filter-range {
   padding: 12px 4px;
 }
-/* line 169, ../sass/components/_mixer.scss */
+/* line 191, ../sass/components/_mixer.scss */
 .filter-range .highpass .slider-track {
   background-color: rgba(255, 255, 255, 0.8);
 }
-/* line 173, ../sass/components/_mixer.scss */
+/* line 195, ../sass/components/_mixer.scss */
 .filter-range .highpass .slider-selection {
   background-color: rgba(0, 0, 0, 0.73);
 }

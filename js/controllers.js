@@ -40,17 +40,48 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
 	.controller('PlayerCtrl', function (webAudioService, soundPlayerService, localStorageService, $scope) {
 		var audioSource = document.querySelector('audio');
+		var audioSlider = document.querySelector('#songSlider');
+
+		var playAudio = function() {
+			audioSource.play();
+        	$scope.playing = true;
+        	$scope.$apply();
+		};
+
+		var pauseAudio = function() {
+			audioSource.pause();
+        	$scope.playing = false;
+        	$scope.$apply();
+		};
 
 		webAudioService.setupAudioNodes(audioSource);
 
 		$scope.playing = false;
 		$scope.loaded = false;
-
 		$scope.currentTime = 0;
-		$scope.duration = audioSource.duration;
+		$scope.durationTime = 0;
 
 		// Let's apply the previous volume value, or set a new one
 		$scope.volume = soundPlayerService.isVolume(localStorageService.get('playerVolume')) ? localStorageService.get('playerVolume') : 70;
+
+		//Initializing slider
+		var slider = new Slider('#songSlider', {
+			formatter: function(value) {
+				return value.toHHMMSS();
+			}
+		});
+
+		// Triggering seeking event
+		slider.on("slideStart", function(newValue) {
+			pauseAudio();
+			audioSource.currentTime = newValue;
+		});
+
+		// Trigering seeking event
+		slider.on("slideStop", function(newValue) {
+			audioSource.currentTime = newValue;
+			playAudio();
+		});
 
 		this.play = function(){
 			audioSource.paused ? audioSource.play() : audioSource.pause();
@@ -86,8 +117,7 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         });
 
         audioSource.addEventListener('ended', function() {
-        	$scope.playing = !$scope.playing;
-        	$scope.$apply();
+        	pauseAudio();
         });
 
         audioSource.addEventListener('canplay', function() {
@@ -109,13 +139,15 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
         audioSource.addEventListener('timeupdate', function() {
         	//update current position in the slider
-        	$scope.currentTime = audioSource.currentTime;
+        	slider.setValue(audioSource.currentTime);
+        	$scope.currentTime = audioSource.currentTime.toHHMMSS();
         	$scope.$apply();
         });
 
         audioSource.addEventListener('durationchange', function() {
         	//update the song duration
-        	$scope.duration = audioSource.duration;
+        	slider.setAttribute('max', audioSource.duration);
+        	$scope.durationTime = audioSource.duration.toHHMMSS();
         	$scope.$apply();
         });
 	})
