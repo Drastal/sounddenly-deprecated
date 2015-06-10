@@ -7,6 +7,7 @@ angular.module('sounddenly.services', [])
 	* Angular services
 	**/
 	.service('webAudioService', function () {
+		var audioSource = '';
 		var sourceNode;
 		var gainNode;
 		var analyserNode;
@@ -23,7 +24,7 @@ angular.module('sounddenly.services', [])
 
 		var analyserGradient;
 
-		this.setupAudioNodes = function(audioSource) {
+		var setupAudioNodes = function() {
 		    // Create nodes
 		    sourceNode = audioCtx.createMediaElementSource(audioSource);
 		    gainNode = audioCtx.createGain();
@@ -37,7 +38,6 @@ angular.module('sounddenly.services', [])
 
 		    // Connect nodes
 		    sourceNode.connect(gainNode);
-		    //filterNode.connect(gainNode);
 		    gainNode.connect(analyserNode);
 		    analyserNode.connect(audioCtx.destination);
 		    sourceNode.loop = false;
@@ -45,29 +45,43 @@ angular.module('sounddenly.services', [])
 		    console.log("Audio Nodes setup");
 		}
 
+		this.setAudioSource = function(source) {
+			audioSource = source;
+			setupAudioNodes();
+		}
+
 		this.setVolume = function(volume) {
 			//Set the volume value. Should be finite and between 0 and 1
 			gainNode.gain.value = volume;
 		}
 
-		this.setFilter = function(connectFilter) {
-			if(connectFilter){
-				sourceNode.connect(filterNode);
-				filterNode.connect(gainNode);
+		this.setFilter = function(filterType) {
+			if(filterType !== 'off'){
+				connectFilter();
+				filterNode.type = filterType;
 			}
-			else{
-				sourceNode.disconnect(0);
-				filterNode.disconnect(0);
-				sourceNode.connect(gainNode);
+			else {
+				disconnectFilter();
 			}
 		}
 
-		this.setFilterType = function(filterType) {
-			filterNode.type = filterType;
+		var connectFilter = function() {
+			sourceNode.connect(filterNode);
+			filterNode.connect(gainNode);
 		}
 
-		this.setFilterFrequency = function(filterFrequencies) {
+		var disconnectFilter = function() {
+			sourceNode.disconnect(0);
+			filterNode.disconnect(0);
+			sourceNode.connect(gainNode);
+		}
 
+		this.setFrequency = function(frequency) {
+			filterNode.frequency.value = frequency;
+		}
+
+		this.setQFactor = function(qFactor) {
+			filterNode.Q.value = qFactor;
 		}
 
 		this.setCanvasCtx = function(analyserCanvas) {
@@ -96,7 +110,7 @@ angular.module('sounddenly.services', [])
 			var x = 0;
 
 			for(var i = 0; i < bufferLength; i++) {
-				barHeight = dataArray[i] * canvasHeight / analyserNode.fftSize;
+				barHeight = Math.pow((dataArray[i] / analyserNode.fftSize), 3) * canvasHeight;
 
 				canvasCtx.fillStyle = analyserGradient;
 				canvasCtx.fillRect(x, canvasHeight-barHeight, barWidth, barHeight);

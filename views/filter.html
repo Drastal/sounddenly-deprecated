@@ -6,12 +6,14 @@
 		    <div class="btn btn-default" ng-class="{'active': isFilterType('lowpass')}" ng-click="setFilterType('lowpass')">Lowpass</div>
 		    <div class="btn btn-default" ng-class="{'active': isFilterType('highpass')}" ng-click="setFilterType('highpass')">Highpass</div>
 		    <div class="btn btn-default" ng-class="{'active': isFilterType('bandpass')}" ng-click="setFilterType('bandpass')">Bandpass</div>
+		    <div class="btn btn-default" ng-class="{'active': isFilterType('notch')}" ng-click="setFilterType('notch')">Notch</div>
 	    </form>
 	</div>
 
 	<div class="col-sm-12 filter-range" ng-hide="filterType == 'off'">
-		<slider class="{{color}}" ng-model="frequencyLow" min="10" step="10" max="20000" ng-show="filterType == 'lowpass'"></slider>
-		<slider class="{{color}} {{filterType}}" ng-model="frequencyHigh" min="10" step="10" max="20000" ng-show="filterType == 'highpass'"></slider>
-		<slider class="{{color}}" range="true" ng-model="frequencyBand" min="10" step="10" max="20000" ng-show="filterType == 'bandpass'"></slider>
+		<slider class="{{color}}" ng-model="frequencyCutoff" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'lowpass'"></slider>
+		<slider class="{{color}} {{filterType}}" ng-model="frequencyCutoff" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'highpass'"></slider>
+		<slider class="{{color}}" range="true" ng-model="frequencies" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'bandpass'"></slider>
+		<slider class="{{color}} {{filterType}}" range="true" ng-model="frequencies" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'notch'"></slider>
 	</div>
 </div>

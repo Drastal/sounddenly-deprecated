@@ -645,7 +645,7 @@ footer .credits {
   padding: 0;
   padding-top: 6px;
   width: 100%;
-  max-height: 150px;
+  max-height: 180px;
 }
 
 /* line 171, ../sass/components/_mixer.scss */
@@ -687,10 +687,10 @@ footer .credits {
   padding: 12px 4px;
 }
 /* line 191, ../sass/components/_mixer.scss */
-.filter-range .highpass .slider-track {
+.filter-range .highpass .slider-track, .filter-range .notch .slider-track {
   background-color: rgba(255, 255, 255, 0.8);
 }
 /* line 195, ../sass/components/_mixer.scss */
-.filter-range .highpass .slider-selection {
+.filter-range .highpass .slider-selection, .filter-range .notch .slider-selection {
   background-color: rgba(0, 0, 0, 0.73);
 }

@@ -6,7 +6,8 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 	/**
 	* Home controller
 	**/
-	.controller('HomeCtrl', function () {
+	.controller('HomeCtrl', function ($scope) {
+		$scope.audioSrc;
 	})
 
 	.controller('AppSettingsCtrl', function ($rootScope, localStorageService) {
@@ -41,6 +42,15 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 	.controller('PlayerCtrl', function (webAudioService, soundPlayerService, localStorageService, $scope) {
 		var audioSource = document.querySelector('audio');
 		var audioSlider = document.querySelector('#songSlider');
+		webAudioService.setAudioSource(audioSource);
+
+		$scope.playing = false;
+		$scope.loaded = false;
+		$scope.currentTime = 0;
+		$scope.durationTime = 0;
+
+		// Let's apply the previous volume value, or set a new one
+		$scope.volume = soundPlayerService.isVolume(localStorageService.get('playerVolume')) ? localStorageService.get('playerVolume') : 70;
 
 		var playAudio = function() {
 			audioSource.play();
@@ -53,16 +63,6 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         	$scope.playing = false;
         	$scope.$apply();
 		};
-
-		webAudioService.setupAudioNodes(audioSource);
-
-		$scope.playing = false;
-		$scope.loaded = false;
-		$scope.currentTime = 0;
-		$scope.durationTime = 0;
-
-		// Let's apply the previous volume value, or set a new one
-		$scope.volume = soundPlayerService.isVolume(localStorageService.get('playerVolume')) ? localStorageService.get('playerVolume') : 70;
 
 		//Initializing slider
 		var slider = new Slider('#songSlider', {
@@ -162,16 +162,28 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 	})
 
 	.controller('FilterCtrl', function (webAudioService, $scope) {
-		$scope.filterType = 'off';
-		$scope.frequencyLow;
-		$scope.frequencyHigh;
-		$scope.frequencyBand = [];
+		//filter variables
+		$scope.filterMin = 10;
+		$scope.filterMax = 12500;
+		$scope.filterStep = 10;
 
-		$scope.frequency = $scope.frequencyLow;
-		$scope.q;
+		$scope.filterType = 'off';
+		$scope.frequencyCutoff = $scope.filterMin;
+		$scope.frequencies = [$scope.filterMin, $scope.filterMax];
+		$scope.frequencyBand;
+		$scope.q = $scope.filterMax - $scope.filterMin;
 
 		$scope.setFilterType = function(type) {
 		    $scope.filterType = type;
+
+		    if(type === 'lowpass' || type === 'highpass') {
+		    	setCutoffFilter();
+		    }
+		    else {
+		    	if(type === 'bandpass' || type === 'notch') {
+			    	setBandFilter();
+			    }
+		    }
 		};
 
 		$scope.isFilterType = function(type) {
@@ -179,18 +191,33 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 		};
 
 		$scope.$watch('filterType', function(newValue, oldValue) {
+			webAudioService.setFilter(newValue);
         });
 
-		$scope.$watch('frequencyLow', function(newValue, oldValue) {
-			$scope.frequency = $scope.frequencyLow;
+		$scope.$watch('frequencyCutoff', function(newValue, oldValue) {
+			if(newValue){
+				$scope.frequencyCutoff = newValue;
+
+				setCutoffFilter();
+			}
         });
 
-		$scope.$watch('frequencyHigh', function(newValue, oldValue) {
-			$scope.frequency = $scope.frequencyHigh;
+		$scope.$watch('frequencies', function(newValue, oldValue) {
+			if(newValue) {
+				$scope.frequencyBand = (newValue[0] + newValue[1]) / 2;
+				$scope.q = newValue[1] - newValue[0];
+
+				setBandFilter();
+			}
         });
 
-		$scope.$watch('frequencyBand', function(newValue, oldValue) {
-			$scope.frequency = ($scope.frequencyBand[0] + $scope.frequencyBand[1]) / 2;
-			$scope.q = $scope.frequencyBand[1] - $scope.frequencyBand[0];
-        });
+        var setCutoffFilter = function() {
+        	webAudioService.setFrequency($scope.frequencyCutoff);
+        	webAudioService.setQFactor(1);
+        };
+
+        var setBandFilter = function() {
+        	webAudioService.setFrequency($scope.frequencyBand);
+        	webAudioService.setQFactor($scope.q);
+        };
 	});

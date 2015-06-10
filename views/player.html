@@ -3,14 +3,15 @@
 		<div class="row">
 			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': loaded, 'playing': playing}" data-snap-ignore="true">
 				<audio>
+        			<source type="audio/ogg" src="sounds/Whitenoisesound.ogg"/>
         			<source type="audio/mpeg" src="sounds/loop.mp3"/>
 					Your browser doesn't support <code>audio</code> element.
 				</audio>
 				<div class="player-controls-play">
-					<span class="glyphicon glyphicon-backward control" aria-hidden="true"></span>
+					<!-- <span class="glyphicon glyphicon-backward control" aria-hidden="true"></span> -->
 					<span class="glyphicon glyphicon-play control" aria-hidden="true" ng-click="player.play()"></span>
 					<span class="glyphicon glyphicon-pause control" aria-hidden="true" ng-click="player.play()"></span>
-					<span class="glyphicon glyphicon-forward control" aria-hidden="true"></span>
+					<!-- <span class="glyphicon glyphicon-forward control" aria-hidden="true"></span> -->
 				</div>
 				<div class="player-controls-volume">
 					<span class="glyphicon glyphicon-volume-down control" aria-hidden="true" ng-click="player.lower()"></span>
