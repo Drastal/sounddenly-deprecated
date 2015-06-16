@@ -152,7 +152,7 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         });
 	})
 
-	.controller('AnalyserCtrl', function (webAudioService, $scope, $rootScope) {
+	.controller('AnalyserCtrl', function (webAudioService, $scope) {
 		webAudioService.setCanvasCtx(document.querySelector('canvas.analyser'));
 		webAudioService.resizeCanvas();
 
@@ -176,14 +176,11 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 		$scope.setFilterType = function(type) {
 		    $scope.filterType = type;
 
-		    if(type === 'lowpass' || type === 'highpass') {
+		    if(type === 'lowpass' || type === 'highpass')
 		    	setCutoffFilter();
-		    }
-		    else {
-		    	if(type === 'bandpass' || type === 'notch') {
+		    else
+		    	if(type === 'bandpass' || type === 'notch')
 			    	setBandFilter();
-			    }
-		    }
 		};
 
 		$scope.isFilterType = function(type) {
@@ -203,9 +200,9 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         });
 
 		$scope.$watch('frequencies', function(newValue, oldValue) {
-			if(newValue) {
+			if(newValue && newValue.length === 2) {
 				$scope.frequencyBand = (newValue[0] + newValue[1]) / 2;
-				$scope.q = newValue[1] - newValue[0];
+				$scope.q = $scope.frequencyBand / Math.abs(parseFloat(newValue[1] - newValue[0]));
 
 				setBandFilter();
 			}
@@ -213,7 +210,7 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 
         var setCutoffFilter = function() {
         	webAudioService.setFrequency($scope.frequencyCutoff);
-        	webAudioService.setQFactor(1);
+        	webAudioService.setQFactor(0.0001);
         };
 
         var setBandFilter = function() {

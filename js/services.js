@@ -14,6 +14,7 @@ angular.module('sounddenly.services', [])
 		var filterNode;
 		var audioCtx = new AudioContext();
 
+		// Analyser variables
 		var bufferLength;
 		var dataArray;
 		var canvas;
@@ -21,7 +22,6 @@ angular.module('sounddenly.services', [])
 		var canvasWidth;
 		var canvasCtx;
 		var drawVisual;
-
 		var analyserGradient;
 
 		var setupAudioNodes = function() {
@@ -31,7 +31,7 @@ angular.module('sounddenly.services', [])
         	analyserNode = audioCtx.createAnalyser();
         	filterNode = audioCtx.createBiquadFilter();
 
-		    // setup a analyzer
+		    // setup an analyser
 			analyserNode.fftSize = 256;
 			bufferLength = analyserNode.frequencyBinCount;
 		    dataArray = new Uint8Array(bufferLength);
@@ -41,8 +41,6 @@ angular.module('sounddenly.services', [])
 		    gainNode.connect(analyserNode);
 		    analyserNode.connect(audioCtx.destination);
 		    sourceNode.loop = false;
-
-		    console.log("Audio Nodes setup");
 		}
 
 		this.setAudioSource = function(source) {
@@ -55,6 +53,9 @@ angular.module('sounddenly.services', [])
 			gainNode.gain.value = volume;
 		}
 
+		/**
+		* Filter functions
+		**/
 		this.setFilter = function(filterType) {
 			if(filterType !== 'off'){
 				connectFilter();
@@ -66,11 +67,14 @@ angular.module('sounddenly.services', [])
 		}
 
 		var connectFilter = function() {
+			// Insert a filter node
+			sourceNode.disconnect(0);
 			sourceNode.connect(filterNode);
 			filterNode.connect(gainNode);
 		}
 
 		var disconnectFilter = function() {
+			// Remove a filter node
 			sourceNode.disconnect(0);
 			filterNode.disconnect(0);
 			sourceNode.connect(gainNode);
@@ -84,6 +88,9 @@ angular.module('sounddenly.services', [])
 			filterNode.Q.value = qFactor;
 		}
 
+		/**
+		* Analyser functions
+		**/
 		this.setCanvasCtx = function(analyserCanvas) {
 			canvas = analyserCanvas;
 			canvasCtx = canvas.getContext('2d');
@@ -120,6 +127,7 @@ angular.module('sounddenly.services', [])
         }
 
         this.setupAnalyserGradient = function(color){
+        	// Depends on user's accent color preference
         	var accColorCode;
 
         	switch(color){
@@ -161,13 +169,12 @@ angular.module('sounddenly.services', [])
 		}
 
 		this.isVolume = function(volume) {
-			// Check the validity of the volume
+			// Check the volume value. Should be finite and between 0 and 100
 			var validVolume = false;
-			if(!isNaN(volume)) {
-				if(volume >= 0 && volume <= 100) {
+
+			if(!isNaN(volume))
+				if(volume >= 0 && volume <= 100)
 					validVolume = true;
-				}
-			}
 
 			return validVolume;
 		}

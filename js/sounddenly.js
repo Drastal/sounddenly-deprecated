@@ -1,14 +1,14 @@
 angular.module('sounddenly', [
-	'ngRoute',
-	'ngAnimate',
-	'sounddenly.services',
-	'sounddenly.directives',
-	'sounddenly.filters',
-	'sounddenly.controllers',
-	'ngSanitize',
-	'LocalStorageModule',
-	'snap',
-	'ui.bootstrap-slider'
+		'ngRoute',
+		'ngAnimate',
+		'sounddenly.services',
+		'sounddenly.directives',
+		'sounddenly.filters',
+		'sounddenly.controllers',
+		'ngSanitize',
+		'LocalStorageModule',
+		'snap',
+		'ui.bootstrap-slider'
 	])
 
     .config(['$routeProvider', function($routeProvider) {
@@ -26,7 +26,6 @@ angular.module('sounddenly', [
 	    try {
 	        // Fix up for prefixing
 	        window.AudioContext = window.AudioContext || window.webkitAudioContext;
-			console.log("Audio context created");
 
 	    } catch (e) {
 	        alert('Web Audio API is not supported in this browser');
@@ -34,8 +33,7 @@ angular.module('sounddenly', [
 	})
 
 	.run(function($rootScope, localStorageService) {
-
+		// Set up some user's preferences
 		$rootScope.background = localStorageService.get('backgroundColor') ? localStorageService.get('backgroundColor') : 'dark';
 		$rootScope.color = localStorageService.get('accentColor') ? localStorageService.get('accentColor') : 'turquoise';
-
 	});
