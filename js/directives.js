@@ -3,12 +3,25 @@
 /* Directives */
 angular.module('sounddenly.directives', [])
 
-	/**
-	* MyDirective directive
-	**/
-	.directive('MyDirective', function () {
-		// return {
-		// 	restrict: 'E',
-		// 	templateUrl: 'views/partials/_project.html'
-		// }
-	});
+/**
+ * Buttons radio
+ **/
+.directive('buttonsRadio', function() {
+    return {
+        restrict: 'E',
+        scope: {
+            model: '=model',
+            options: '=options'
+        },
+        controller: function($scope) {
+            $scope.activate = function(idx) {
+                $scope.model = $scope.options[idx];
+            };
+        },
+        template: "<button type='button' class='btn btn-default' " +
+            "ng-class='{active: option == model}'" +
+            "ng-repeat='option in options' " +
+            "ng-click='activate($index)'>{{option}} " +
+            "</button>"
+    };
+});

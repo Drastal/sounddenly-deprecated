@@ -1,198 +1,133 @@
 .mixer-tool {
-	margin-bottom: 12px;
-	background-color: $color-bg-md;
-	color: $color-bg-lg;
+    margin-bottom: 12px;
+    background-color: $color-bg-md;
+    color: $color-bg-lg;
 }
 
 .player {
-
-	.player-controls {
-		padding: 12px 0;
-		text-align: center;
-
-		.player-controls-play {
-			font-size: 25px;
-
-			.control {
-				padding: 6px;
-
-				vertical-align: middle;
-
-				cursor: not-allowed;
-				opacity: 0.5;
-			}
-
-			.glyphicon-play, .glyphicon-pause {
-				padding: 0.3em;
-				font-size: 1.7em;
-
-				border: solid 2px $color-bg-lg;
-				@include border-radius(2em);
-			}
-
-			.glyphicon-pause {
-				display: none;
-			}
-		}
-
-		.player-controls-volume {
-			font-size: 18px;
-
-			.control {
-				padding-top: 6px;
-				vertical-align: middle;
-
-				cursor: pointer;
-				opacity: 0.5;
-			}
-		}
-	}
-
-	.player-controls.active .player-controls-play, .player-controls.active .player-controls-volume {
-		.control {
-			cursor: pointer;
-			opacity: 1;
-
-			@include transition(opacity .25s);
-		}
-	}
-
-	.player-controls.playing .player-controls-play {
-		.glyphicon-play {
-			display: none;
-		}
-
-		.glyphicon-pause {
-			display: inline-block;
-		}
-	}
-
-	.player-volume {
-		display: inline-block;
-		width: 100px;
-
-
-		.slider {
-		    &.slider-horizontal {
-		        height: $sliderTrackHeight / 4;
-		        .slider-track {
-		            height: $sliderTrackHeight / 4;
-		        }
-		        .slider-tick,
-		        .slider-handle {
-		            margin-left: -$sliderHandleHeight / 1.2/2;
-		            margin-top: -$sliderHandleHeight / 1.2/2 + $sliderTrackHeight / 4/2;
-		        }
-		        .slider-tick-label-container {
-		            .slider-tick-label {
-		                margin-top: $sliderHandleHeight;
-		            }
-		        }
-		    }
-		    .tooltip {
-		        &.top {
-		            margin-top: -$sliderHandleHeight * 1.7;
-		        }
-		    }
-		}
-
-		.slider-track {
-		    @include border-radius($sliderTrackHeight / 4);
-		}
-
-		.slider-selection {
-		    @include border-radius($sliderTrackHeight / 4);
-		}
-
-		.slider-track-low,
-		.slider-track-high {
-		    border-radius: border-radius($sliderTrackHeight / 4);
-		}
-
-		.slider-handle {
-		    width: $sliderHandleHeight / 1.2;
-		    height: $sliderHandleHeight / 1.2;
-		    &.round {
-		        @include border-radius($sliderHandleHeight / 1.2);
-		    }
-		}
-
-		.slider-tick {
-		    width: $sliderHandleHeight / 1.2;
-		    height: $sliderHandleHeight / 1.2;
-		}
-	}
-
-	.player-progress {
-		#songSlider {
-			margin-top: 50px;
-		}
-
-	}
-
-	.player-timer {
-		text-align: center;
-
-		.timer {
-			display: inline-block;
-			margin-top: 10px;
-
-			font-family: sans-serif;
-			font-size: 24px;
-		}
-
-		.timer-current, .timer-duration {
-			padding: 10px;
-		}
-
-		.timer-current {
-			font-size: 140%;
-		}
-
-		.timer-duration {
-			width: 100%;
-			border-top: 1px solid #999;
-			color: #999;
-		}
-	}
+    .player-controls {
+        padding: 12px 0;
+        text-align: center;
+        .player-controls-play {
+            height: 90px;
+            .control {
+                padding: 6px;
+                vertical-align: middle;
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+            .glyphicon-play,
+            .glyphicon-pause {
+                padding: 0.3em;
+                font-size: 3em;
+                border: solid 2px $color-bg-lg;
+                @include border-radius(2em);
+            }
+            .glyphicon-pause {
+                display: none;
+            }
+        }
+        .player-controls-volume {
+            font-size: 18px;
+            .control {
+                padding: 6px;
+                vertical-align: middle;
+                cursor: pointer;
+                opacity: 0.5;
+            }
+        }
+    }
+    .player-controls.active .player-controls-play,
+    .player-controls.active .player-controls-volume {
+        .control {
+            cursor: pointer;
+            opacity: 1;
+            @include transition(opacity .25s);
+        }
+    }
+    .player-controls.playing .player-controls-play {
+        .glyphicon-play {
+            display: none;
+        }
+        .glyphicon-pause {
+            display: inline-block;
+        }
+    }
+    .player-volume {
+        display: inline-block;
+        width: 100px;
+    }
+    .player-progress {
+        #songSlider {
+            margin-top: 50px;
+        }
+    }
+    .player-timer {
+        text-align: center;
+        .timer {
+            display: inline-block;
+            margin-top: 10px;
+            font-family: sans-serif;
+            font-size: 24px;
+        }
+        .timer-current,
+        .timer-duration {
+            padding: 10px;
+        }
+        .timer-current {
+            font-size: 140%;
+        }
+        .timer-duration {
+            width: 100%;
+            border-top: 1px solid #999;
+            color: #999;
+        }
+    }
 }
 
 .analyser {
-	display: block;
-	margin: 0;
-	padding: 0;
-	padding-top: 6px;
-
-	width: 100%;
-	max-height: 180px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding-top: 6px;
+    width: 100%;
+    max-height: 180px;
 }
 
 .filter-type {
-	.filter-type--title {
-		margin-right: 8px;
-		color: rgba(255, 255, 255, 0.4);
-	}
+    .filter-type--title {
+        margin-right: 8px;
+        color: rgba(255, 255, 255, 0.4);
+    }
+    .active {
+        background-color: $color-acc-turquoise;
+    }
+}
 
-	.active {
-		background-color: $color-acc-turquoise;
-	}
+.turquoise .filter-type .active {
+    background-color: $color-acc-turquoise;
+}
 
-	.turquoise .active {background-color: $color-acc-turquoise;}
-	.green .active {background-color: $color-acc-green;}
-	.blue .active {background-color: $color-acc-blue;}
-	.orange .active {background-color: $color-acc-orange;}
-	.red .active {background-color: $color-acc-red;}
-	.violet .active {background-color: $color-acc-violet;}
+.green .filter-type .active {
+    background-color: $color-acc-green;
+}
+
+.blue .filter-type .active {
+    background-color: $color-acc-blue;
+}
+
+.orange .filter-type .active {
+    background-color: $color-acc-orange;
+}
+
+.red .filter-type .active {
+    background-color: $color-acc-red;
+}
+
+.violet .filter-type .active {
+    background-color: $color-acc-violet;
 }
 
 .filter-range {
-	padding: 12px 4px;
-
-	.highpass .slider-track, .notch .slider-track {
-    	background-color: rgba(255, 255, 255, 0.8);
-	}
-
-	.highpass .slider-selection, .notch .slider-selection {
-    	background-color: rgba(0, 0, 0, 0.73);
-	}
+    padding: 0 12px 24px 12px;
 }

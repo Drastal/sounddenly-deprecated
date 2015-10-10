@@ -10,24 +10,20 @@ header {
 		color: $color-bg-lg;
 	}
 
-	.file-browse.red {
-		background-color: $color-acc-red;
-	}
+	.file-upload--container {
+		position: relative;
 
-	.file-browse.orange {
-		background-color: $color-acc-orange;
-	}
+		input {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
 
-	.file-browse.green {
-		background-color: $color-acc-green;
-	}
-
-	.file-browse.violet {
-		background-color: $color-acc-violet;
-	}
-
-	.file-browse.blue {
-		background-color: $color-acc-blue;
+			opacity: 0;
+			cursor: pointer;
+		}
 	}
 }
 
@@ -35,4 +31,29 @@ header {
 	h1 {
 		font-size: 30px !important;
 	}
+}
+
+.turquoise header .file-browse {
+	background-color: $color-acc-turquoise;
+	color: $color-bg-lg;
+}
+
+.red header .file-browse {
+	background-color: $color-acc-red;
+}
+
+.orange header .file-browse {
+	background-color: $color-acc-orange;
+}
+
+.green header .file-browse {
+	background-color: $color-acc-green;
+}
+
+.violet header .file-browse {
+	background-color: $color-acc-violet;
+}
+
+.blue header .file-browse {
+	background-color: $color-acc-blue;
 }

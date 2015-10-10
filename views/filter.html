@@ -1,19 +1,11 @@
-<div class="row" ng-controller="FilterCtrl as filter" data-snap-ignore="true">
-	<div class="col-sm-12  filter-type">
-		<label class="filter-type--title">Filters</label>
-	    <form class="btn-group {{color}}">
-		    <div class="btn btn-default" ng-class="{'active': isFilterType('off')}" ng-click="setFilterType('off')">Off</div>
-		    <div class="btn btn-default" ng-class="{'active': isFilterType('lowpass')}" ng-click="setFilterType('lowpass')">Lowpass</div>
-		    <div class="btn btn-default" ng-class="{'active': isFilterType('highpass')}" ng-click="setFilterType('highpass')">Highpass</div>
-		    <div class="btn btn-default" ng-class="{'active': isFilterType('bandpass')}" ng-click="setFilterType('bandpass')">Bandpass</div>
-		    <div class="btn btn-default" ng-class="{'active': isFilterType('notch')}" ng-click="setFilterType('notch')">Notch</div>
-	    </form>
-	</div>
-
-	<div class="col-sm-12 filter-range" ng-hide="filterType == 'off'">
-		<slider class="{{color}}" ng-model="frequencyCutoff" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'lowpass'"></slider>
-		<slider class="{{color}} {{filterType}}" ng-model="frequencyCutoff" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'highpass'"></slider>
-		<slider class="{{color}}" range="true" ng-model="frequencies" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'bandpass'"></slider>
-		<slider class="{{color}} {{filterType}}" range="true" ng-model="frequencies" min="filterMin" step="filterStep" max="filterMax" ng-show="filterType == 'notch'"></slider>
-	</div>
+<div class="row" ng-controller="FilterCtrl" data-snap-ignore="true">
+    <div class="col-sm-12  filter-type">
+        <label class="filter-type--title">Filters</label>
+        <buttons-radio class="btn-group" data-toggle="buttons-radio" model='filter.type' options='filter.types'></buttons-radio>
+    </div>
+    <div class="col-sm-12">
+        <div class="filter-range" ng-hide="filter.type === 'off'">
+            <slider class="{{filter.type}}" ng-model="filter.cutoff" min="filter.min" step="filter.step" max="filter.max"></slider>
+        </div>
+    </div>
 </div>

@@ -1,23 +1,22 @@
-<div class="row" ng-controller="PlayerCtrl as player">
+<div class="row" ng-controller="PlayerCtrl">
 	<div class="col-sm-12 player">
 		<div class="row">
-			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': loaded, 'playing': playing}" data-snap-ignore="true">
+			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': audio.loaded, 'playing': audio.playing}" data-snap-ignore="true">
 				<audio>
-        			<source type="audio/mpeg" src="sounds/loop.mp3"/>
+        			<source type="audio/mpeg" src="sounds/OVPPDC.mp3"/>
         			<!-- If you want to test the app on a white noise sound...
         			<source type="audio/ogg" src="sounds/Whitenoisesound.ogg"/> -->
 					Your browser doesn't support <code>audio</code> element.
 				</audio>
 				<div class="player-controls-play">
 					<!-- <span class="glyphicon glyphicon-backward control" aria-hidden="true"></span> -->
-					<span class="glyphicon glyphicon-play control" aria-hidden="true" ng-click="player.play()"></span>
-					<span class="glyphicon glyphicon-pause control" aria-hidden="true" ng-click="player.play()"></span>
+					<span class="glyphicon control" ng-class="{'glyphicon-play': !audio.playing, 'glyphicon-pause': audio.playing}" aria-hidden="true" ng-click="play()"></span>
 					<!-- <span class="glyphicon glyphicon-forward control" aria-hidden="true"></span> -->
 				</div>
 				<div class="player-controls-volume">
-					<span class="glyphicon glyphicon-volume-down control" aria-hidden="true" ng-click="player.lower()"></span>
-					<slider class="player-volume control {{color}}" ng-model="volume" min="0" step="2" max="100"></slider>
-					<span class="glyphicon glyphicon-volume-up control" aria-hidden="true" ng-click="player.higher()"></span>
+					<span class="glyphicon control" ng-class="{'glyphicon-volume-down': audio.volume > 0, 'glyphicon-volume-off': audio.volume == 0}" aria-hidden="true" ng-click="lower()"></span>
+					<slider class="player-volume control" ng-model="audio.volume" min="0" step="2" max="100"></slider>
+					<span class="glyphicon glyphicon-volume-up control" aria-hidden="true" ng-click="higher()"></span>
 				</div>
 			</span>
 
@@ -27,8 +26,8 @@
 
 			<span class="col-xs-6 col-sm-3 col-md-2 player-timer">
 				<div class="timer">
-					<div class="timer-current">{{currentTime}}</div>
-					<div class="timer-duration">{{durationTime}}</div>
+					<div class="timer-current">{{audio.currentTime}}</div>
+					<div class="timer-duration">{{audio.durationTime}}</div>
 				</div>
 			</span>
 		</div>

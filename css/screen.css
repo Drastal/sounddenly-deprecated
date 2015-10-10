@@ -126,27 +126,101 @@ a {
   color: #c0392b;
 }
 
-/*    Slider
-    -------------------------------------------------------------------------- */
-/* line 39, ../sass/components/_main.scss */
+/* line 3, ../sass/components/_header.scss */
+header .header-options {
+  text-align: right;
+}
+/* line 7, ../sass/components/_header.scss */
+header .file-browse {
+  width: 400px !important;
+  background-color: #1abc9c;
+  color: #ecf0f1;
+}
+/* line 13, ../sass/components/_header.scss */
+header .file-upload--container {
+  position: relative;
+}
+/* line 16, ../sass/components/_header.scss */
+header .file-upload--container input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  /* line 31, ../sass/components/_header.scss */
+  h1 {
+    font-size: 30px !important;
+  }
+}
+/* line 36, ../sass/components/_header.scss */
+.turquoise header .file-browse {
+  background-color: #1abc9c;
+  color: #ecf0f1;
+}
+
+/* line 41, ../sass/components/_header.scss */
+.red header .file-browse {
+  background-color: #c0392b;
+}
+
+/* line 45, ../sass/components/_header.scss */
+.orange header .file-browse {
+  background-color: #d35400;
+}
+
+/* line 49, ../sass/components/_header.scss */
+.green header .file-browse {
+  background-color: #27ae60;
+}
+
+/* line 53, ../sass/components/_header.scss */
+.violet header .file-browse {
+  background-color: #8e44ad;
+}
+
+/* line 57, ../sass/components/_header.scss */
+.blue header .file-browse {
+  background-color: #2980b9;
+}
+
+/* line 2, ../sass/components/_footer.scss */
+footer .credits {
+  color: #999;
+  font-size: 10px;
+  text-align: right;
+}
+
+/* -------------------------------------------------------------------------- *\
+	Variables
+\* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- *\
+	Player song slider
+\* -------------------------------------------------------------------------- */
+/* line 13, ../sass/components/_sliders.scss */
 .slider {
   display: inline-block;
   vertical-align: middle;
   position: relative;
 }
-/* line 43, ../sass/components/_main.scss */
+/* line 17, ../sass/components/_sliders.scss */
 .slider.slider-horizontal {
   width: 100%;
-  height: 8px;
+  height: 24px;
 }
-/* line 46, ../sass/components/_main.scss */
+/* line 20, ../sass/components/_sliders.scss */
 .slider.slider-horizontal .slider-track {
-  height: 8px;
+  height: 24px;
   width: 100%;
   top: 50%;
   left: 0;
 }
-/* line 52, ../sass/components/_main.scss */
+/* line 26, ../sass/components/_sliders.scss */
 .slider.slider-horizontal .slider-selection,
 .slider.slider-horizontal .slider-track-low,
 .slider.slider-horizontal .slider-track-high {
@@ -154,63 +228,63 @@ a {
   top: 0;
   bottom: 0;
 }
-/* line 59, ../sass/components/_main.scss */
+/* line 33, ../sass/components/_sliders.scss */
 .slider.slider-horizontal .slider-tick,
 .slider.slider-horizontal .slider-handle {
-  margin-left: -13px;
-  margin-top: -9px;
+  margin-left: -18px;
+  margin-top: -6px;
 }
-/* line 64, ../sass/components/_main.scss */
+/* line 38, ../sass/components/_sliders.scss */
 .slider.slider-horizontal .slider-tick-label-container {
   white-space: nowrap;
 }
-/* line 66, ../sass/components/_main.scss */
+/* line 40, ../sass/components/_sliders.scss */
 .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
-  margin-top: 31.2px;
+  margin-top: 43.2px;
   display: inline-block;
   text-align: center;
 }
-/* line 74, ../sass/components/_main.scss */
+/* line 48, ../sass/components/_sliders.scss */
 .slider.slider-disabled .slider-handle {
   background-color: #f7f7f7;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RmZGZkZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2JlYmViZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-repeat: repeat-x;
 }
-/* line 77, ../sass/components/_main.scss */
+/* line 51, ../sass/components/_sliders.scss */
 .slider.slider-disabled .slider-track {
   background-color: #f7f7f7;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U1ZTVlNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5ZTllOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-repeat: repeat-x;
   cursor: not-allowed;
 }
-/* line 82, ../sass/components/_main.scss */
+/* line 56, ../sass/components/_sliders.scss */
 .slider input {
   display: none;
 }
-/* line 85, ../sass/components/_main.scss */
+/* line 59, ../sass/components/_sliders.scss */
 .slider .tooltip-inner {
   white-space: nowrap;
 }
-/* line 89, ../sass/components/_main.scss */
+/* line 63, ../sass/components/_sliders.scss */
 .slider .tooltip.top {
-  margin-top: -41.6px;
+  margin-top: -36px;
 }
-/* line 93, ../sass/components/_main.scss */
+/* line 67, ../sass/components/_sliders.scss */
 .slider .hide {
   display: none;
 }
 
-/* line 98, ../sass/components/_main.scss */
+/* line 72, ../sass/components/_sliders.scss */
 .slider-track {
   position: absolute;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.35);
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
 }
 
-/* line 105, ../sass/components/_main.scss */
+/* line 79, ../sass/components/_sliders.scss */
 .slider-selection {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
@@ -220,19 +294,19 @@ a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
 }
 
-/* line 113, ../sass/components/_main.scss */
+/* line 87, ../sass/components/_sliders.scss */
 .slider-selection.tick-slider-selection {
   background-color: #f7f7f7;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg5Y2RlZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzgxYmZkZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-repeat: repeat-x;
 }
 
-/* line 117, ../sass/components/_main.scss */
+/* line 91, ../sass/components/_sliders.scss */
 .slider-track-low,
 .slider-track-high {
   position: absolute;
@@ -240,14 +314,14 @@ a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-radius: border-radius(8px);
+  border-radius: border-radius(24px);
 }
 
-/* line 125, ../sass/components/_main.scss */
+/* line 99, ../sass/components/_sliders.scss */
 .slider-handle {
   position: absolute;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   background-color: #1abc9c;
   background-color: #1abc9c;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFkZDJhZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzE3YTY4OSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
@@ -257,18 +331,18 @@ a {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   border: 0px solid transparent;
 }
-/* line 133, ../sass/components/_main.scss */
+/* line 107, ../sass/components/_sliders.scss */
 .slider-handle.round {
-  -moz-border-radius: 26px;
-  -webkit-border-radius: 26px;
-  border-radius: 26px;
+  -moz-border-radius: 36px;
+  -webkit-border-radius: 36px;
+  border-radius: 36px;
 }
 
-/* line 138, ../sass/components/_main.scss */
+/* line 112, ../sass/components/_sliders.scss */
 .slider-tick {
   position: absolute;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   background-color: #f7f7f7;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-repeat: repeat-x;
@@ -282,11 +356,11 @@ a {
   opacity: 0.8;
   border: 0px solid transparent;
 }
-/* line 148, ../sass/components/_main.scss */
+/* line 122, ../sass/components/_sliders.scss */
 .slider-tick.round {
   border-radius: 50%;
 }
-/* line 151, ../sass/components/_main.scss */
+/* line 125, ../sass/components/_sliders.scss */
 .slider-tick.in-selection {
   background-color: #f7f7f7;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg5Y2RlZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzgxYmZkZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
@@ -294,7 +368,10 @@ a {
   opacity: 1;
 }
 
-/* line 157, ../sass/components/_main.scss */
+/* -------------------------------------------------------------------------- *\
+	Colors
+\* -------------------------------------------------------------------------- */
+/* line 136, ../sass/components/_sliders.scss */
 .turquoise .slider-handle {
   background-color: #1abc9c;
   background-color: #1abc9c;
@@ -302,7 +379,7 @@ a {
   background-repeat: repeat-x;
 }
 
-/* line 162, ../sass/components/_main.scss */
+/* line 141, ../sass/components/_sliders.scss */
 .blue .slider-handle {
   background-color: #2980b9;
   background-color: #2980b9;
@@ -310,7 +387,7 @@ a {
   background-repeat: repeat-x;
 }
 
-/* line 167, ../sass/components/_main.scss */
+/* line 146, ../sass/components/_sliders.scss */
 .orange .slider-handle {
   background-color: #d35400;
   background-color: #d35400;
@@ -318,7 +395,7 @@ a {
   background-repeat: repeat-x;
 }
 
-/* line 172, ../sass/components/_main.scss */
+/* line 151, ../sass/components/_sliders.scss */
 .red .slider-handle {
   background-color: #c0392b;
   background-color: #c0392b;
@@ -326,7 +403,7 @@ a {
   background-repeat: repeat-x;
 }
 
-/* line 177, ../sass/components/_main.scss */
+/* line 156, ../sass/components/_sliders.scss */
 .violet .slider-handle {
   background-color: #8e44ad;
   background-color: #8e44ad;
@@ -334,7 +411,7 @@ a {
   background-repeat: repeat-x;
 }
 
-/* line 182, ../sass/components/_main.scss */
+/* line 161, ../sass/components/_sliders.scss */
 .green .slider-handle {
   background-color: #27ae60;
   background-color: #27ae60;
@@ -342,48 +419,75 @@ a {
   background-repeat: repeat-x;
 }
 
-/* line 3, ../sass/components/_header.scss */
-header .header-options {
-  text-align: right;
+/* -------------------------------------------------------------------------- *\
+	Player volume
+\* -------------------------------------------------------------------------- */
+/* line 172, ../sass/components/_sliders.scss */
+.player-volume .slider.slider-horizontal {
+  height: 6px;
 }
-/* line 7, ../sass/components/_header.scss */
-header .file-browse {
-  width: 400px !important;
-  background-color: #1abc9c;
-  color: #ecf0f1;
+/* line 174, ../sass/components/_sliders.scss */
+.player-volume .slider.slider-horizontal .slider-track {
+  height: 6px;
 }
-/* line 13, ../sass/components/_header.scss */
-header .file-browse.red {
-  background-color: #c0392b;
+/* line 177, ../sass/components/_sliders.scss */
+.player-volume .slider.slider-horizontal .slider-tick,
+.player-volume .slider.slider-horizontal .slider-handle {
+  margin-left: -15px;
+  margin-top: -12px;
 }
-/* line 17, ../sass/components/_header.scss */
-header .file-browse.orange {
-  background-color: #d35400;
+/* line 183, ../sass/components/_sliders.scss */
+.player-volume .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
+  margin-top: 36px;
 }
-/* line 21, ../sass/components/_header.scss */
-header .file-browse.green {
-  background-color: #27ae60;
+/* line 189, ../sass/components/_sliders.scss */
+.player-volume .slider .tooltip.top {
+  margin-top: -46.8px;
 }
-/* line 25, ../sass/components/_header.scss */
-header .file-browse.violet {
-  background-color: #8e44ad;
+/* line 194, ../sass/components/_sliders.scss */
+.player-volume .slider-track {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
-/* line 29, ../sass/components/_header.scss */
-header .file-browse.blue {
-  background-color: #2980b9;
+/* line 197, ../sass/components/_sliders.scss */
+.player-volume .slider-selection {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+/* line 200, ../sass/components/_sliders.scss */
+.player-volume .slider-track-low,
+.player-volume .slider-track-high {
+  border-radius: border-radius(6px);
+}
+/* line 204, ../sass/components/_sliders.scss */
+.player-volume .slider-handle {
+  width: 30px;
+  height: 30px;
+}
+/* line 207, ../sass/components/_sliders.scss */
+.player-volume .slider-handle.round {
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+}
+/* line 211, ../sass/components/_sliders.scss */
+.player-volume .slider-tick {
+  width: 30px;
+  height: 30px;
 }
 
-@media screen and (max-width: 480px) {
-  /* line 35, ../sass/components/_header.scss */
-  h1 {
-    font-size: 30px !important;
-  }
+/* -------------------------------------------------------------------------- *\
+    Filters ranges
+\* -------------------------------------------------------------------------- */
+/* line 224, ../sass/components/_sliders.scss */
+.filter-range .highpass .slider-track, .filter-range .notch .slider-track {
+  background-color: rgba(255, 255, 255, 0.8);
 }
-/* line 2, ../sass/components/_footer.scss */
-footer .credits {
-  color: #999;
-  font-size: 10px;
-  text-align: right;
+/* line 228, ../sass/components/_sliders.scss */
+.filter-range .highpass .slider-selection, .filter-range .notch .slider-selection {
+  background-color: rgba(0, 0, 0, 0.73);
 }
 
 /* line 1, ../sass/components/_snap.scss */
@@ -491,48 +595,50 @@ footer .credits {
   color: #ecf0f1;
 }
 
-/* line 9, ../sass/components/_mixer.scss */
+/* line 8, ../sass/components/_mixer.scss */
 .player .player-controls {
   padding: 12px 0;
   text-align: center;
 }
-/* line 13, ../sass/components/_mixer.scss */
+/* line 11, ../sass/components/_mixer.scss */
 .player .player-controls .player-controls-play {
-  font-size: 25px;
+  height: 90px;
 }
-/* line 16, ../sass/components/_mixer.scss */
+/* line 13, ../sass/components/_mixer.scss */
 .player .player-controls .player-controls-play .control {
   padding: 6px;
   vertical-align: middle;
   cursor: not-allowed;
   opacity: 0.5;
 }
-/* line 25, ../sass/components/_mixer.scss */
-.player .player-controls .player-controls-play .glyphicon-play, .player .player-controls .player-controls-play .glyphicon-pause {
+/* line 19, ../sass/components/_mixer.scss */
+.player .player-controls .player-controls-play .glyphicon-play,
+.player .player-controls .player-controls-play .glyphicon-pause {
   padding: 0.3em;
-  font-size: 1.7em;
+  font-size: 3em;
   border: solid 2px #ecf0f1;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   border-radius: 2em;
 }
-/* line 33, ../sass/components/_mixer.scss */
+/* line 26, ../sass/components/_mixer.scss */
 .player .player-controls .player-controls-play .glyphicon-pause {
   display: none;
 }
-/* line 38, ../sass/components/_mixer.scss */
+/* line 30, ../sass/components/_mixer.scss */
 .player .player-controls .player-controls-volume {
   font-size: 18px;
 }
-/* line 41, ../sass/components/_mixer.scss */
+/* line 32, ../sass/components/_mixer.scss */
 .player .player-controls .player-controls-volume .control {
-  padding-top: 6px;
+  padding: 6px;
   vertical-align: middle;
   cursor: pointer;
   opacity: 0.5;
 }
-/* line 52, ../sass/components/_mixer.scss */
-.player .player-controls.active .player-controls-play .control, .player .player-controls.active .player-controls-volume .control {
+/* line 42, ../sass/components/_mixer.scss */
+.player .player-controls.active .player-controls-play .control,
+.player .player-controls.active .player-controls-volume .control {
   cursor: pointer;
   opacity: 1;
   -moz-transition: opacity 0.25s;
@@ -540,105 +646,51 @@ footer .credits {
   -webkit-transition: opacity 0.25s;
   transition: opacity 0.25s;
 }
-/* line 61, ../sass/components/_mixer.scss */
+/* line 49, ../sass/components/_mixer.scss */
 .player .player-controls.playing .player-controls-play .glyphicon-play {
   display: none;
 }
-/* line 65, ../sass/components/_mixer.scss */
+/* line 52, ../sass/components/_mixer.scss */
 .player .player-controls.playing .player-controls-play .glyphicon-pause {
   display: inline-block;
 }
-/* line 70, ../sass/components/_mixer.scss */
+/* line 56, ../sass/components/_mixer.scss */
 .player .player-volume {
   display: inline-block;
   width: 100px;
 }
-/* line 76, ../sass/components/_mixer.scss */
-.player .player-volume .slider.slider-horizontal {
-  height: 2px;
-}
-/* line 78, ../sass/components/_mixer.scss */
-.player .player-volume .slider.slider-horizontal .slider-track {
-  height: 2px;
-}
-/* line 81, ../sass/components/_mixer.scss */
-.player .player-volume .slider.slider-horizontal .slider-tick,
-.player .player-volume .slider.slider-horizontal .slider-handle {
-  margin-left: -10.83333px;
-  margin-top: -9.83333px;
-}
-/* line 87, ../sass/components/_mixer.scss */
-.player .player-volume .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
-  margin-top: 26px;
-}
-/* line 93, ../sass/components/_mixer.scss */
-.player .player-volume .slider .tooltip.top {
-  margin-top: -44.2px;
-}
-/* line 99, ../sass/components/_mixer.scss */
-.player .player-volume .slider-track {
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-}
-/* line 103, ../sass/components/_mixer.scss */
-.player .player-volume .slider-selection {
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-}
-/* line 107, ../sass/components/_mixer.scss */
-.player .player-volume .slider-track-low,
-.player .player-volume .slider-track-high {
-  border-radius: border-radius(2px);
-}
-/* line 112, ../sass/components/_mixer.scss */
-.player .player-volume .slider-handle {
-  width: 21.66667px;
-  height: 21.66667px;
-}
-/* line 115, ../sass/components/_mixer.scss */
-.player .player-volume .slider-handle.round {
-  -moz-border-radius: 21.66667px;
-  -webkit-border-radius: 21.66667px;
-  border-radius: 21.66667px;
-}
-/* line 120, ../sass/components/_mixer.scss */
-.player .player-volume .slider-tick {
-  width: 21.66667px;
-  height: 21.66667px;
-}
-/* line 127, ../sass/components/_mixer.scss */
+/* line 61, ../sass/components/_mixer.scss */
 .player .player-progress #songSlider {
   margin-top: 50px;
 }
-/* line 133, ../sass/components/_mixer.scss */
+/* line 65, ../sass/components/_mixer.scss */
 .player .player-timer {
   text-align: center;
 }
-/* line 136, ../sass/components/_mixer.scss */
+/* line 67, ../sass/components/_mixer.scss */
 .player .player-timer .timer {
   display: inline-block;
   margin-top: 10px;
   font-family: sans-serif;
   font-size: 24px;
 }
-/* line 144, ../sass/components/_mixer.scss */
-.player .player-timer .timer-current, .player .player-timer .timer-duration {
+/* line 73, ../sass/components/_mixer.scss */
+.player .player-timer .timer-current,
+.player .player-timer .timer-duration {
   padding: 10px;
 }
-/* line 148, ../sass/components/_mixer.scss */
+/* line 77, ../sass/components/_mixer.scss */
 .player .player-timer .timer-current {
   font-size: 140%;
 }
-/* line 152, ../sass/components/_mixer.scss */
+/* line 80, ../sass/components/_mixer.scss */
 .player .player-timer .timer-duration {
   width: 100%;
   border-top: 1px solid #999;
   color: #999;
 }
 
-/* line 160, ../sass/components/_mixer.scss */
+/* line 88, ../sass/components/_mixer.scss */
 .analyser {
   display: block;
   margin: 0;
@@ -648,49 +700,47 @@ footer .credits {
   max-height: 180px;
 }
 
-/* line 171, ../sass/components/_mixer.scss */
+/* line 98, ../sass/components/_mixer.scss */
 .filter-type .filter-type--title {
   margin-right: 8px;
   color: rgba(255, 255, 255, 0.4);
 }
-/* line 176, ../sass/components/_mixer.scss */
+/* line 102, ../sass/components/_mixer.scss */
 .filter-type .active {
   background-color: #1abc9c;
 }
-/* line 180, ../sass/components/_mixer.scss */
-.filter-type .turquoise .active {
+
+/* line 107, ../sass/components/_mixer.scss */
+.turquoise .filter-type .active {
   background-color: #1abc9c;
 }
-/* line 181, ../sass/components/_mixer.scss */
-.filter-type .green .active {
+
+/* line 111, ../sass/components/_mixer.scss */
+.green .filter-type .active {
   background-color: #27ae60;
 }
-/* line 182, ../sass/components/_mixer.scss */
-.filter-type .blue .active {
+
+/* line 115, ../sass/components/_mixer.scss */
+.blue .filter-type .active {
   background-color: #2980b9;
 }
-/* line 183, ../sass/components/_mixer.scss */
-.filter-type .orange .active {
+
+/* line 119, ../sass/components/_mixer.scss */
+.orange .filter-type .active {
   background-color: #d35400;
 }
-/* line 184, ../sass/components/_mixer.scss */
-.filter-type .red .active {
+
+/* line 123, ../sass/components/_mixer.scss */
+.red .filter-type .active {
   background-color: #c0392b;
 }
-/* line 185, ../sass/components/_mixer.scss */
-.filter-type .violet .active {
+
+/* line 127, ../sass/components/_mixer.scss */
+.violet .filter-type .active {
   background-color: #8e44ad;
 }
 
-/* line 188, ../sass/components/_mixer.scss */
+/* line 131, ../sass/components/_mixer.scss */
 .filter-range {
-  padding: 12px 4px;
-}
-/* line 191, ../sass/components/_mixer.scss */
-.filter-range .highpass .slider-track, .filter-range .notch .slider-track {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-/* line 195, ../sass/components/_mixer.scss */
-.filter-range .highpass .slider-selection, .filter-range .notch .slider-selection {
-  background-color: rgba(0, 0, 0, 0.73);
+  padding: 0 12px 24px 12px;
 }

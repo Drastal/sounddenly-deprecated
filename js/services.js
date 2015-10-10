@@ -3,179 +3,228 @@
 /* Services */
 angular.module('sounddenly.services', [])
 
-	/**
-	* Angular services
-	**/
-	.service('webAudioService', function () {
-		var audioSource = '';
-		var sourceNode;
-		var gainNode;
-		var analyserNode;
-		var filterNode;
-		var audioCtx = new AudioContext();
+/**
+ * Angular services
+ **/
 
-		// Analyser variables
-		var bufferLength;
-		var dataArray;
-		var canvas;
-		var canvasHeight;
-		var canvasWidth;
-		var canvasCtx;
-		var drawVisual;
-		var analyserGradient;
+/*
+.service('soundPlayerService', function() {
+    this.play = function(sourceNode, buffer) {
+        sourceNode.buffer = buffer;
+        sourceNode.start(0);
+    };
+})*/
 
-		var setupAudioNodes = function() {
-		    // Create nodes
-		    sourceNode = audioCtx.createMediaElementSource(audioSource);
-		    gainNode = audioCtx.createGain();
-        	analyserNode = audioCtx.createAnalyser();
-        	filterNode = audioCtx.createBiquadFilter();
+.value('settingsValue', {
+    user: {
+        accentColor: 'turquoise',
+        backgroundColor: 'dark'
+    },
+    player: {
+        audioSrc: '',
+        volume: 70,
+        activeFilter: '',
+        cutoff: 'off',
+        q: 0.0001,
+    },
+    colorsCode: {
+        turquoise: '#1abc9c',
+        orange: '#d35400',
+        blue: '#2980b9',
+        green: '#27ae60',
+        violet: '#8e44ad',
+        red: '#c0392b',
+        violet: '#d35400',
+    },
+    backgroundsCode: {
+        dark: '#0B0D0D',
+        light: '#ecf0f1',
+    },
+    filters: ['off', 'lowpass', 'highpass', 'bandpass', 'notch'],
+})
 
-		    // setup an analyser
-			analyserNode.fftSize = 256;
-			bufferLength = analyserNode.frequencyBinCount;
-		    dataArray = new Uint8Array(bufferLength);
+.factory('settingsFactory', ['settingsValue', 'localStorageService', function(settingsValue, localStorageService) {
+    var settings = {};
 
-		    // Connect nodes
-		    sourceNode.connect(gainNode);
-		    gainNode.connect(analyserNode);
-		    analyserNode.connect(audioCtx.destination);
-		    sourceNode.loop = false;
-		}
-
-		this.setAudioSource = function(source) {
-			audioSource = source;
-			setupAudioNodes();
-		}
-
-		this.setVolume = function(volume) {
-			//Set the volume value. Should be finite and between 0 and 1
-			gainNode.gain.value = volume;
-		}
-
-		/**
-		* Filter functions
-		**/
-		this.setFilter = function(filterType) {
-			if(filterType !== 'off'){
-				connectFilter();
-				filterNode.type = filterType;
-			}
-			else {
-				disconnectFilter();
-			}
-		}
-
-		var connectFilter = function() {
-			// Insert a filter node
-			sourceNode.disconnect(0);
-			sourceNode.connect(filterNode);
-			filterNode.connect(gainNode);
-		}
-
-		var disconnectFilter = function() {
-			// Remove a filter node
-			sourceNode.disconnect(0);
-			filterNode.disconnect(0);
-			sourceNode.connect(gainNode);
-		}
-
-		this.setFrequency = function(frequency) {
-			filterNode.frequency.value = frequency;
-		}
-
-		this.setQFactor = function(qFactor) {
-			filterNode.Q.value = qFactor;
-		}
-
-		/**
-		* Analyser functions
-		**/
-		this.setCanvasCtx = function(analyserCanvas) {
-			canvas = analyserCanvas;
-			canvasCtx = canvas.getContext('2d');
-		}
-
-        this.resizeCanvas = function() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.width/4;
-            canvasWidth = canvas.width;
-            canvasHeight = canvas.height;
-			canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-            drawAnalyser();
+    settings.setAccentColor = function(newColor) {
+        if (newColor in settingsValue.colorsCode) {
+            settingsValue.user.accentColor = newColor;
+            localStorageService.set('accentColor', newColor);
         }
+    };
 
-        var drawAnalyser = function() {
-			drawVisual = requestAnimationFrame(drawAnalyser);
-			analyserNode.getByteFrequencyData(dataArray);
-
-    		canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-			var barWidth = (canvasWidth / bufferLength) * 1.8;
-			var barHeight;
-			var x = 0;
-
-			for(var i = 0; i < bufferLength; i++) {
-				barHeight = Math.pow((dataArray[i] / analyserNode.fftSize), 3) * canvasHeight;
-
-				canvasCtx.fillStyle = analyserGradient;
-				canvasCtx.fillRect(x, canvasHeight-barHeight, barWidth, barHeight);
-
-				x += barWidth + 1;
-			}
+    settings.setBackgroundColor = function(newColor) {
+        if (newColor in settingsValue.backgroundsCode) {
+            settingsValue.user.backgroundColor = newColor;
+            localStorageService.set('backgroundColor', newColor);
         }
+    };
 
-        this.setupAnalyserGradient = function(color){
-        	// Depends on user's accent color preference
-        	var accColorCode;
+    settings.getAccentColor = function() {
+        return localStorageService.get('accentColor') || settingsValue.user.accentColor;
+    };
 
-        	switch(color){
-        		case 'turquoise':
-        			accColorCode = '#1abc9c';
-        			break;
-        		case 'orange':
-        			accColorCode = '#d35400';
-        			break;
-        		case 'blue':
-        			accColorCode = '#2980b9';
-        			break;
-        		case 'green':
-        			accColorCode = '#27ae60';
-        			break;
-        		case 'violet':
-        			accColorCode = '#8e44ad';
-        			break;
-        		case 'red':
-        			accColorCode = '#c0392b';
-        			break;
-        		case 'violet':
-        			accColorCode = '#d35400';
-        			break;
-        		default:
-        			accColorCode = '#1abc9c';
-        	}
+    settings.getBackgroundColor = function() {
+        return localStorageService.get('backgroundColor') || settingsValue.user.backgroundColor;
+    };
 
-        	analyserGradient = canvasCtx.createLinearGradient(0, 0, 0, canvasHeight);
-			analyserGradient.addColorStop(1, accColorCode);
-			analyserGradient.addColorStop(0, '#fff');
+    return settings;
+}])
+
+.factory('playerFactory', ['settingsValue', 'nodesFactory', 'localStorageService', function(settingsValue, nodesFactory, localStorageService) {
+	var player = {};
+
+	player.setAudioSource = function(audioSource) {
+		nodesFactory.setup(audioSource);
+	};
+
+	player.setVolume = function(newVolume) {
+		// Params : newVolume : integer between 0 and 100
+        settingsValue.player.volume = newVolume;
+		nodesFactory.setVolume(Math.round(Math.pow((parseInt(newVolume)/100), 2) * 100) / 100);
+	};
+
+	player.getVolume = function() {
+        return localStorageService.get('volume') || settingsValue.player.volume;
+	};
+
+	return player;
+}])
+
+.factory('nodesFactory', ['colorsFactory', function(colorsFactory) {
+    var nodes = {};
+
+    var audioSource = '';
+    var sourceNode;
+    var gainNode;
+    var analyserNode;
+    var filterNode;
+    var audioCtx = new AudioContext();
+
+    // Analyser variables
+    var bufferLength;
+    var dataArray;
+    var canvas;
+    var canvasCtx;
+    var analyserGradient;
+
+    nodes.setup = function(audioSource) {
+        // Create nodes
+        sourceNode = audioCtx.createMediaElementSource(audioSource);
+        gainNode = audioCtx.createGain();
+        analyserNode = audioCtx.createAnalyser();
+        filterNode = audioCtx.createBiquadFilter();
+
+        // setup an analyser
+        analyserNode.fftSize = 256;
+        bufferLength = analyserNode.frequencyBinCount;
+        dataArray = new Uint8Array(bufferLength);
+
+        // Connect nodes
+        sourceNode.connect(gainNode);
+        gainNode.connect(analyserNode);
+        analyserNode.connect(audioCtx.destination);
+        sourceNode.loop = false;
+    };
+
+    nodes.destroy = function() {
+        sourceNode.disconnect(0);
+        gainNode.disconnect(0);
+        analyserNode.disconnect(0);
+        filterNode.disconnect(0);
+    };
+
+    nodes.setVolume = function(volume) {
+        //Set the volume value. Should be finite and between 0 and 1
+        gainNode.gain.value = volume;
+    };
+
+    /**
+     * Filter functions
+     **/
+    nodes.setFilter = function(filterType) {
+        if (filterType !== 'off') {
+            nodes.connectFilter();
+            filterNode.type = filterType;
+        } else {
+            nodes.disconnectFilter();
         }
-	})
+    };
 
-	.service('soundPlayerService', function () {
-		this.play = function(sourceNode, buffer) {
-		    sourceNode.buffer = buffer;
-		    sourceNode.start(0);
-		}
+    nodes.connectFilter = function() {
+        // Insert a filter node
+        sourceNode.disconnect(0);
+        filterNode.disconnect(0);
+        sourceNode.connect(filterNode);
+        filterNode.connect(gainNode);
+    };
 
-		this.isVolume = function(volume) {
-			// Check the volume value. Should be finite and between 0 and 100
-			var validVolume = false;
+    nodes.disconnectFilter = function() {
+        // Remove a filter node
+        sourceNode.disconnect(0);
+        filterNode.disconnect(0);
+        sourceNode.connect(gainNode);
+    };
 
-			if(!isNaN(volume))
-				if(volume >= 0 && volume <= 100)
-					validVolume = true;
+    nodes.setFrequency = function(frequency) {
+        filterNode.frequency.value = frequency;
+    };
 
-			return validVolume;
-		}
-	});
+    nodes.setQFactor = function(qFactor) {
+        filterNode.Q.value = qFactor;
+    };
+
+    /**
+     * Analyser functions
+     **/
+    nodes.setCanvasCtx = function(analyserCanvas) {
+        canvas = analyserCanvas;
+        canvasCtx = canvas.getContext('2d');
+    };
+
+    nodes.resizeCanvas = function() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.width / 4;
+        canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawAnalyser();
+    };
+
+    nodes.setupAnalyserGradient = function() {
+        analyserGradient = canvasCtx.createLinearGradient(0, 0, 0, canvas.height);
+        analyserGradient.addColorStop(1, colorsFactory.code());
+        analyserGradient.addColorStop(0, '#fff');
+    };
+
+    var drawAnalyser = function() {
+        var drawVisual = requestAnimationFrame(drawAnalyser);
+        analyserNode.getByteFrequencyData(dataArray);
+
+        canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+        var barWidth = (canvas.width / bufferLength) * 1.8;
+        var barHeight;
+        var x = 0;
+
+        for (var i = 0; i < bufferLength; i++) {
+            barHeight = Math.pow((dataArray[i] / analyserNode.fftSize), 3) * canvas.height;
+
+            canvasCtx.fillStyle = analyserGradient;
+            canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+
+            x += barWidth + 1;
+        }
+    };
+
+    return nodes;
+}])
+
+.factory('colorsFactory', ['settingsValue', function(settingsValue) {
+    var color = {};
+
+    color.code = function(colorName) {
+        return settingsValue.colorsCode[settingsValue.user.accentColor] || settingsValue.turquoise;
+    };
+
+    return color;
+}]);

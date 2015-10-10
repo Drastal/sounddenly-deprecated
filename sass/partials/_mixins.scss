@@ -5,6 +5,12 @@
 	animation: $animation;
 }
 
+@mixin slider-background ($colorstart:#f5f5f5, $colorend:#f9f9f9, $backcolor: #f7f7f7) {
+    background-color: $backcolor;
+    background-image: -svg(linear-gradient(to bottom, $colorstart, $colorend));
+    background-repeat: repeat-x;
+}
+
 // keyframes mixin
 @mixin keyframes($name) {
 	@-webkit-keyframes #{$name} {

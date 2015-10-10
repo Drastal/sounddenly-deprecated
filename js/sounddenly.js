@@ -34,6 +34,4 @@ angular.module('sounddenly', [
 
 	.run(function($rootScope, localStorageService) {
 		// Set up some user's preferences
-		$rootScope.background = localStorageService.get('backgroundColor') ? localStorageService.get('backgroundColor') : 'dark';
-		$rootScope.color = localStorageService.get('accentColor') ? localStorageService.get('accentColor') : 'turquoise';
 	});
