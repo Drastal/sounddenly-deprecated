@@ -10,11 +10,22 @@
             <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <div class="navbar-form navbar-left">
                     <form class="form-group" name="browseAudio" ng-submit="loadAudio()">
-                        <div class="input-group">
-                            <input class="form-control file-browse" type="text" placeholder="Enter audio file path" ng-model="audio.source" data-snap-ignore="true"/>
+                        <!-- <div class="input-group">
+                            <input class="form-control file-browse" type="text" placeholder="Enter audio file path" ng-model="audio.source" data-snap-ignore="true" />
                             <button type="submit" class="btn btn-default">
                                 <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                             </button>
+                        </div> -->
+                        <button type="button" class="btn btn-default" ng-click="loadSample()">
+                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Load a sample
+                        </button>
+                        <button type="button" class="btn btn-default" ng-click="loadWhiteNoise()">
+                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Load a white noise
+                        </button>
+                        <div class="checkbox">
+                            <label class="btn btn-default" ng-class="{active: audio.loop}">
+                                <input type="checkbox" ng-model="audio.loop" hidden> Loopable
+                            </label>
                         </div>
                     </form>
                 </div>

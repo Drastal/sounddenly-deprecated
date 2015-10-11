@@ -64,18 +64,19 @@
     }
     .player-timer {
         text-align: center;
+        margin-top: 20px;
         .timer {
             display: inline-block;
             margin-top: 10px;
             font-family: sans-serif;
-            font-size: 24px;
+            font-size: 28px;
         }
         .timer-current,
         .timer-duration {
             padding: 10px;
         }
         .timer-current {
-            font-size: 140%;
+            font-size: 1.4em;
         }
         .timer-duration {
             width: 100%;

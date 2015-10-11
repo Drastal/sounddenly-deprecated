@@ -9,6 +9,10 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 .controller('HomeCtrl', ['$scope', 'settingsValue', 'settingsFactory', 'playerFactory', function($scope, settingsValue, settingsFactory, playerFactory) {
     $scope.accentColors = settingsValue.colorsCode;
     $scope.backgroundColors = settingsValue.backgroundsCode;
+    $scope.audio = {
+        source: '',
+        loop: false,
+    };
 
     $scope.colors = {
         accentColor: settingsFactory.getAccentColor(),
@@ -23,17 +27,30 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         settingsFactory.setBackgroundColor(newValue);
     });
 
+    $scope.$watch('audio.loop', function(newValue, oldValue) {
+        settingsValue.player.loop = newValue;
+    });
+
     $scope.loadAudio = function() {
-        var audioSource = {
-            element: document.querySelector('audio'),
-            audioPath: '',
-        }
-        audioSource.element.src = audioSource.audioPath || 'sounds/OVPPDC.mp3';
-        playerFactory.setAudioSource(audioSource.element);
+        var audioSource = document.querySelector('audio');
+        audioSource.src = $scope.audio.source || 'sounds/loop.mp3';
+        playerFactory.setAudioSource(audioSource);
+    };
+
+    $scope.loadSample = function() {
+        var audioSource = document.querySelector('audio');
+        audioSource.src = 'sounds/loop.mp3';
+        playerFactory.setAudioSource(audioSource);
+    };
+
+    $scope.loadWhiteNoise = function() {
+        var audioSource = document.querySelector('audio');
+        audioSource.src = 'sounds/Whitenoisesound.ogg';
+        playerFactory.setAudioSource(audioSource);
     };
 }])
 
-.controller('PlayerCtrl', ['$scope', 'playerFactory', 'nodesFactory', function($scope, playerFactory, nodesFactory) {
+.controller('PlayerCtrl', ['$scope', 'settingsValue', 'playerFactory', 'nodesFactory', function($scope, settingsValue, playerFactory, nodesFactory) {
     var audioSource = document.querySelector('audio');
     nodesFactory.setup(audioSource);
 
@@ -46,15 +63,12 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
     }
 
     $scope.play = function() {
-        $scope.audio.playing = !$scope.audio.playing;
+        if ($scope.audio.loaded) {
+            $scope.audio.playing = !$scope.audio.playing;
 
-        $scope.audio.playing ? audioSource.play() : audioSource.pause();
+            $scope.audio.playing ? audioSource.play() : audioSource.pause();
+        }
     };
-
-    $scope.$watch('audio.volume', function(newValue, oldValue) {
-        if ($scope.audio.loaded)
-            playerFactory.setVolume(newValue);
-    });
 
     $scope.higher = function() {
         $scope.audio.volume = Math.min($scope.audio.volume + 10, 100);
@@ -64,6 +78,21 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         $scope.audio.volume = Math.max($scope.audio.volume - 10, 0);
     };
 
+    $scope.$watch('audio.volume', function(newValue, oldValue) {
+        if ($scope.audio.loaded)
+            playerFactory.setVolume(newValue);
+    });
+
+    $scope.$watch(function() {
+            return settingsValue.player.loop;
+        },
+        function(newValue, oldValue) {
+            audioSource.loop = newValue;
+        }, true);
+
+    /**
+     * Slider
+     **/
     //Initializing slider
     var slider = new Slider('#songSlider', {
         formatter: function(value) {
@@ -116,6 +145,21 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         });
     });
 
+    audioSource.addEventListener('suspend', function() {
+        // Continue to play after a pause to buffer
+        $scope.$apply(function() {
+            console.log('paused');
+        });
+    });
+
+    audioSource.addEventListener('loadstart', function() {
+        // Attempting to load a new song
+        $scope.$apply(function() {
+            $scope.audio.playing = false;
+            $scope.audio.loaded = false;
+        });
+    });
+
     audioSource.addEventListener('timeupdate', function() {
         $scope.$apply(function() {
             // Update current position in the slider
@@ -128,9 +172,11 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
     audioSource.addEventListener('durationchange', function() {
         // Update the song duration
         $scope.$apply(function() {
-            var duration = audioSource.duration;
-            slider.setAttribute('max', duration);
-            $scope.audio.durationTime = duration.toHHMMSS();
+            if (!isNaN(audioSource.duration)) {
+                var duration = audioSource.duration;
+                slider.setAttribute('max', duration);
+                $scope.audio.durationTime = duration.toHHMMSS();
+            }
         });
     });
 }])
@@ -189,15 +235,3 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         return $scope.filter.type === 'bandpass' || $scope.filter.type === 'notch';
     };
 }]);
-
-//var audioSource = $scope.audio.source;
-//webAudioService.setAudioSource(audioSource);
-
-/*$rootScope.$watch('changedSrc', function(newValue, oldValue) {
-			if(newValue) {
-				console.log('changed');
-				webAudioService.destroy();
-				webAudioService.setAudioSource(audioSource);
-				webAudioService.setVolume(Math.round(Math.pow((parseInt($scope.volume)/100), 2) * 100) / 100);
-			}
-        });*/

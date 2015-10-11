@@ -22,6 +22,7 @@ angular.module('sounddenly.services', [])
     },
     player: {
         audioSrc: '',
+        loop: false,
         volume: 70,
         activeFilter: '',
         filter: 'off',
@@ -76,6 +77,7 @@ angular.module('sounddenly.services', [])
     var player = {};
 
     player.setAudioSource = function(audioSource) {
+    	settingsValue.player.audioSource = audioSource.src;
         nodesFactory.setup(audioSource);
     };
 
