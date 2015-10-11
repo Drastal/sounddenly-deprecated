@@ -104,27 +104,27 @@
     }
 }
 
-.turquoise .filter-type .active {
+.turquoise .filter-type .active, .turquoise .btn-default:focus, .turquoise .btn-default.focus {
     background-color: $color-acc-turquoise;
 }
 
-.green .filter-type .active {
+.green .filter-type .active, .green .btn-default:focus, .green .btn-default.focus {
     background-color: $color-acc-green;
 }
 
-.blue .filter-type .active {
+.blue .filter-type .active, .blue .btn-default:focus, .blue .btn-default.focus {
     background-color: $color-acc-blue;
 }
 
-.orange .filter-type .active {
+.orange .filter-type .active, .orange .btn-default:focus, .orange .btn-default.focus {
     background-color: $color-acc-orange;
 }
 
-.red .filter-type .active {
+.red .filter-type .active, .red .btn-default:focus, .red .btn-default.focus {
     background-color: $color-acc-red;
 }
 
-.violet .filter-type .active {
+.violet .filter-type .active, .violet .btn-default:focus, .violet .btn-default.focus {
     background-color: $color-acc-violet;
 }
 

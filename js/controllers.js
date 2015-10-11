@@ -150,56 +150,43 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 .controller('FilterCtrl', ['$scope', 'settingsValue', 'nodesFactory', function($scope, settingsValue, nodesFactory) {
     //filter variables
     $scope.filter = {
-    	types: settingsValue.filters,
-    	type: 'off',
-    	min: 10,
-    	max: 12500,
-    	step: 10,
-    	cutoff: 10,
-    	range: [10, 12500],
-    	band: '',
-    	q: 12500 - 10,
+        types: settingsValue.filters,
+        type: 'off',
+        min: 10,
+        max: 12500,
+        step: 10,
+        cutoff: 10,
+        band: [10, 12500]
     }
-
-    $scope.setFilterType = function(type) {
-        $scope.filter.type = type;
-
-        if (type === 'lowpass' || type === 'highpass')
-            setCutoffFilter();
-        else
-        if (type === 'bandpass' || type === 'notch')
-            setBandFilter();
-    };
 
     $scope.$watch('filter.type', function(newValue, oldValue) {
         nodesFactory.setFilter(newValue);
+
+        if (newValue !== 'off' && !$scope.isBandFilter()) {
+            nodesFactory.setFilterValues($scope.filter.cutoff, 0.0001);
+        } else {
+            if ($scope.isBandFilter()) {
+                var frequency = ($scope.filter.band[0] + $scope.filter.band[1]) / 2;
+                nodesFactory.setFilterValues(frequency, frequency / Math.abs(parseFloat($scope.filter.band[1] - $scope.filter.band[0])));
+            }
+        }
     });
 
     $scope.$watch('filter.cutoff', function(newValue, oldValue) {
         if (newValue) {
-            $scope.filter.cutoff = newValue;
-
-            setCutoffFilter();
+            nodesFactory.setFilterValues(newValue, 0.0001);
         }
     });
 
-    $scope.$watch('filter.range', function(newValue, oldValue) {
-        if (newValue && newValue.length === 2) {
-            $scope.filter.band = (newValue[0] + newValue[1]) / 2;
-            $scope.filter.q = $scope.filter.band / Math.abs(parseFloat(newValue[1] - newValue[0]));
-
-            setBandFilter();
+    $scope.$watch('filter.band', function(newValue, oldValue) {
+        if (newValue) {
+            var frequency = (newValue[0] + newValue[1]) / 2;
+            nodesFactory.setFilterValues(frequency, frequency / Math.abs(parseFloat(newValue[1] - newValue[0])));
         }
     });
 
-    var setCutoffFilter = function() {
-        nodesFactory.setFrequency($scope.filter.cutoff);
-        nodesFactory.setQFactor(0.0001);
-    };
-
-    var setBandFilter = function() {
-        nodesFactory.setFrequency($scope.filter.band);
-        nodesFactory.setQFactor($scope.filter.q);
+    $scope.isBandFilter = function() {
+        return $scope.filter.type === 'bandpass' || $scope.filter.type === 'notch';
     };
 }]);
 
@@ -214,8 +201,3 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
 				webAudioService.setVolume(Math.round(Math.pow((parseInt($scope.volume)/100), 2) * 100) / 100);
 			}
         });*/
-
-/*
-	/*}])
-
-	.controller('FilterCtrl', function (webAudioService, $scope) {*/

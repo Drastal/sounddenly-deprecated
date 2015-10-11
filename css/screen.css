@@ -711,32 +711,32 @@ footer .credits {
 }
 
 /* line 107, ../sass/components/_mixer.scss */
-.turquoise .filter-type .active {
+.turquoise .filter-type .active, .turquoise .btn-default:focus, .turquoise .btn-default.focus {
   background-color: #1abc9c;
 }
 
 /* line 111, ../sass/components/_mixer.scss */
-.green .filter-type .active {
+.green .filter-type .active, .green .btn-default:focus, .green .btn-default.focus {
   background-color: #27ae60;
 }
 
 /* line 115, ../sass/components/_mixer.scss */
-.blue .filter-type .active {
+.blue .filter-type .active, .blue .btn-default:focus, .blue .btn-default.focus {
   background-color: #2980b9;
 }
 
 /* line 119, ../sass/components/_mixer.scss */
-.orange .filter-type .active {
+.orange .filter-type .active, .orange .btn-default:focus, .orange .btn-default.focus {
   background-color: #d35400;
 }
 
 /* line 123, ../sass/components/_mixer.scss */
-.red .filter-type .active {
+.red .filter-type .active, .red .btn-default:focus, .red .btn-default.focus {
   background-color: #c0392b;
 }
 
 /* line 127, ../sass/components/_mixer.scss */
-.violet .filter-type .active {
+.violet .filter-type .active, .violet .btn-default:focus, .violet .btn-default.focus {
   background-color: #8e44ad;
 }
 

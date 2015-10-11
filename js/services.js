@@ -24,7 +24,8 @@ angular.module('sounddenly.services', [])
         audioSrc: '',
         volume: 70,
         activeFilter: '',
-        cutoff: 'off',
+        filter: 'off',
+        cutoff: 0,
         q: 0.0001,
     },
     colorsCode: {
@@ -72,26 +73,26 @@ angular.module('sounddenly.services', [])
 }])
 
 .factory('playerFactory', ['settingsValue', 'nodesFactory', 'localStorageService', function(settingsValue, nodesFactory, localStorageService) {
-	var player = {};
+    var player = {};
 
-	player.setAudioSource = function(audioSource) {
-		nodesFactory.setup(audioSource);
-	};
+    player.setAudioSource = function(audioSource) {
+        nodesFactory.setup(audioSource);
+    };
 
-	player.setVolume = function(newVolume) {
-		// Params : newVolume : integer between 0 and 100
+    player.setVolume = function(newVolume) {
+        // Params : newVolume : integer between 0 and 100
         settingsValue.player.volume = newVolume;
-		nodesFactory.setVolume(Math.round(Math.pow((parseInt(newVolume)/100), 2) * 100) / 100);
-	};
+        nodesFactory.setVolume(Math.round(Math.pow((parseInt(newVolume) / 100), 2) * 100) / 100);
+    };
 
-	player.getVolume = function() {
+    player.getVolume = function() {
         return localStorageService.get('volume') || settingsValue.player.volume;
-	};
+    };
 
-	return player;
+    return player;
 }])
 
-.factory('nodesFactory', ['colorsFactory', function(colorsFactory) {
+.factory('nodesFactory', ['settingsValue', 'colorsFactory', function(settingsValue, colorsFactory) {
     var nodes = {};
 
     var audioSource = '';
@@ -166,13 +167,12 @@ angular.module('sounddenly.services', [])
         sourceNode.connect(gainNode);
     };
 
-    nodes.setFrequency = function(frequency) {
-        filterNode.frequency.value = frequency;
-    };
-
-    nodes.setQFactor = function(qFactor) {
-        filterNode.Q.value = qFactor;
-    };
+    nodes.setFilterValues = function(frequency, qFactor) {
+        settingsValue.player.cutoff = frequency;
+        settingsValue.player.q = qFactor;
+    	filterNode.frequency.value = frequency;
+    	filterNode.Q.value = qFactor;
+    }
 
     /**
      * Analyser functions
