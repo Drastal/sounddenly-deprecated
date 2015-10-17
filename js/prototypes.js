@@ -17,4 +17,27 @@ Number.prototype.toHHMMSS = function () {
 	}
 
     return time;
+};
+
+function extractRadioDomain(url) {
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    }
+    else {
+        domain = url.split('/')[0];
+    }
+
+    //find & remove port number
+    domain = domain.split(':')[0];
+
+    // Remove sub-domain and extension
+    domain = domain.slice(domain.lastIndexOf(".", domain.lastIndexOf(".") - 1) + 1, domain.lastIndexOf("."));
+
+    // Will return 'Radio' if domain is an IP
+    if(!isNaN(domain))
+        domain = 'Radio';
+
+    return domain;
 }

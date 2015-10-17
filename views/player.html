@@ -2,10 +2,8 @@
 	<div class="col-sm-12 player">
 		<div class="row">
 			<span class="col-xs-6 col-sm-3 col-md-2 player-controls" ng-class="{'active': audio.loaded, 'playing': audio.playing}" data-snap-ignore="true">
-				<audio>
+				<audio crossorigin='anonymous'>
         			<source type="audio/mpeg"/>
-        			<!-- If you want to test the app on a white noise sound...
-        			<source type="audio/ogg" src="sounds/Whitenoisesound.ogg"/> -->
 					Your browser doesn't support <code>audio</code> element.
 				</audio>
 				<div class="player-controls-play">
@@ -32,4 +30,6 @@
 			</span>
 		</div>
 	</div>
+
+	<canvas class="analyser">Your browser doesn't support <code>canvas</code> element.</canvas>
 </div>

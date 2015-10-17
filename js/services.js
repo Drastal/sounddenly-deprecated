@@ -7,14 +7,6 @@ angular.module('sounddenly.services', [])
  * Angular services
  **/
 
-/*
-.service('soundPlayerService', function() {
-    this.play = function(sourceNode, buffer) {
-        sourceNode.buffer = buffer;
-        sourceNode.start(0);
-    };
-})*/
-
 .value('settingsValue', {
     user: {
         accentColor: 'turquoise',
@@ -76,8 +68,10 @@ angular.module('sounddenly.services', [])
 .factory('playerFactory', ['settingsValue', 'nodesFactory', 'localStorageService', function(settingsValue, nodesFactory, localStorageService) {
     var player = {};
 
-    player.setAudioSource = function(audioSource) {
-    	settingsValue.player.audioSource = audioSource.src;
+    player.setupAudio = function(audioSource, url) {
+        audioSource.firstElementChild.setAttribute('src', url);
+        audioSource.load();
+        settingsValue.player.audioSource = url;
         nodesFactory.setup(audioSource);
     };
 
@@ -102,7 +96,7 @@ angular.module('sounddenly.services', [])
     var gainNode;
     var analyserNode;
     var filterNode;
-    var audioCtx = new AudioContext();
+    var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
     // Analyser variables
     var bufferLength;
@@ -113,15 +107,20 @@ angular.module('sounddenly.services', [])
 
     nodes.setup = function(audioSource) {
         // Create nodes
-        sourceNode = audioCtx.createMediaElementSource(audioSource);
-        gainNode = audioCtx.createGain();
-        analyserNode = audioCtx.createAnalyser();
-        filterNode = audioCtx.createBiquadFilter();
+        if (!sourceNode)
+            sourceNode = audioCtx.createMediaElementSource(audioSource);
+        if (!gainNode)
+            gainNode = audioCtx.createGain();
+        if (!analyserNode)
+            analyserNode = audioCtx.createAnalyser();
+        if (!filterNode)
+            filterNode = audioCtx.createBiquadFilter();
 
         // setup an analyser
         analyserNode.fftSize = 256;
         bufferLength = analyserNode.frequencyBinCount;
         dataArray = new Uint8Array(bufferLength);
+        analyserNode.getByteTimeDomainData(dataArray);
 
         // Connect nodes
         sourceNode.connect(gainNode);
@@ -172,8 +171,8 @@ angular.module('sounddenly.services', [])
     nodes.setFilterValues = function(frequency, qFactor) {
         settingsValue.player.cutoff = frequency;
         settingsValue.player.q = qFactor;
-    	filterNode.frequency.value = frequency;
-    	filterNode.Q.value = qFactor;
+        filterNode.frequency.value = frequency;
+        filterNode.Q.value = qFactor;
     }
 
     /**

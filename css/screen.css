@@ -701,52 +701,51 @@ footer .credits {
   display: block;
   margin: 0;
   padding: 0;
-  padding-top: 6px;
   width: 100%;
-  max-height: 180px;
+  max-height: 200px;
 }
 
-/* line 99, ../sass/components/_mixer.scss */
+/* line 98, ../sass/components/_mixer.scss */
 .filter-type .filter-type--title {
   margin-right: 8px;
   color: rgba(255, 255, 255, 0.4);
 }
-/* line 103, ../sass/components/_mixer.scss */
+/* line 102, ../sass/components/_mixer.scss */
 .filter-type .active {
   background-color: #1abc9c;
 }
 
-/* line 108, ../sass/components/_mixer.scss */
+/* line 107, ../sass/components/_mixer.scss */
 .turquoise .filter-type .active, .turquoise .btn-default:focus, .turquoise .btn-default.focus {
   background-color: #1abc9c;
 }
 
-/* line 112, ../sass/components/_mixer.scss */
+/* line 111, ../sass/components/_mixer.scss */
 .green .filter-type .active, .green .btn-default:focus, .green .btn-default.focus {
   background-color: #27ae60;
 }
 
-/* line 116, ../sass/components/_mixer.scss */
+/* line 115, ../sass/components/_mixer.scss */
 .blue .filter-type .active, .blue .btn-default:focus, .blue .btn-default.focus {
   background-color: #2980b9;
 }
 
-/* line 120, ../sass/components/_mixer.scss */
+/* line 119, ../sass/components/_mixer.scss */
 .orange .filter-type .active, .orange .btn-default:focus, .orange .btn-default.focus {
   background-color: #d35400;
 }
 
-/* line 124, ../sass/components/_mixer.scss */
+/* line 123, ../sass/components/_mixer.scss */
 .red .filter-type .active, .red .btn-default:focus, .red .btn-default.focus {
   background-color: #c0392b;
 }
 
-/* line 128, ../sass/components/_mixer.scss */
+/* line 127, ../sass/components/_mixer.scss */
 .violet .filter-type .active, .violet .btn-default:focus, .violet .btn-default.focus {
   background-color: #8e44ad;
 }
 
-/* line 132, ../sass/components/_mixer.scss */
+/* line 131, ../sass/components/_mixer.scss */
 .filter-range {
   padding: 0 12px 24px 12px;
 }

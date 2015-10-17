@@ -18,5 +18,6 @@ this project could not have happened without the advice of
 - [Roxanne Ricci](https://github.com/rricci)
 - [raphaelb-EPF](https://github.com/raphaelb-EPF)
 - [Tilan](https://github.com/Tilan)
+- [Declan pen](http://codepen.io/AfroDev/pen/MYOrvP)
 
 Many thanks
