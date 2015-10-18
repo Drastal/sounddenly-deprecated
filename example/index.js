@@ -215,20 +215,11 @@ function anim() {
         var v = dataArray[i] / 128.0;
         var h = v * HEIGHT / 2;
         mean += h;
-        var sred = sredHex;
-        var sgrn = sgrnHex;
-        var sblu = sbluHex;
-        var ored = oredHex;
-        var ogrn = ogrnHex;
-        var oblu = obluHex;
-        var tred = ored / 2;
-        var tgrn = ogrn / 2;
-        var tblu = oblu / 2;
         var amp = 0;
         var loud = Math.abs(dataArray[i]);
-        var cred = sred;
-        var cgrn = sgrn;
-        var cblu = sblu;
+        var cred = sredHex;
+        var cgrn = sgrnHex;
+        var cblu = sbluHex;
         if (pulseMode === true) {
             opacity = (1 / pulseSpacing) * pulse;
         } else {
@@ -239,31 +230,21 @@ function anim() {
             amp = loud;
         }
         if (vibranceMode === true) {
-            document.body.setAttribute("style", "-webkit-filter:brightness(" + (amp / 256 + 1) + ")");
+            document.body.setAttribute("style", "filter:brightness(" + (amp / 256 + 1) + "); -webkit-filter:brightness(" + (amp / 256 + 1) + ")");
         } else {
             document.body.removeAttribute("style");
         }
-        var redinc = Math.floor((tred - sred) / bleed);
-        var grninc = Math.floor((tgrn - sgrn) / bleed);
-        var bluinc = Math.floor((tblu - sblu) / bleed);
-
         for (var o = 0; o < bleed; o++) {
             if (o < bleed - 1) {
                 //--TODO-- Check for outerbars mode
-                cred += redinc;
-                cgrn += grninc;
-                cblu += bluinc;
+                cred += Math.floor((oredHex / 2 - sredHex) / bleed);
+                cgrn += Math.floor((ogrnHex / 2 - sgrnHex) / bleed);
+                cblu += Math.floor((obluHex / 2 - sbluHex) / bleed);
 
-                red = cred;
-                green = cgrn;
-                blue = cblu;
-                canvasCtx.fillStyle = "rgba(" + red + "," + green + "," + blue + "," + opacity + ")";
+                canvasCtx.fillStyle = "rgba(" + cred + "," + cgrn + "," + cblu + "," + opacity + ")";
                 canvasCtx.fillRect(i * (barWidth + barSpacing), HEIGHT / 2 - ((2 - (o / bleed)) * h / (2 * barHeight)), barWidth, (((2 - (o / bleed)) * h) / barHeight));
             } else {
-                red = ored;
-                green = ogrn;
-                blue = oblu;
-                canvasCtx.fillStyle = "rgba(" + red + "," + green + "," + blue + "," + opacity + ")";
+                canvasCtx.fillStyle = "rgba(" + oredHex + "," + ogrnHex + "," + obluHex + "," + opacity + ")";
                 canvasCtx.fillRect(i * (barWidth + barSpacing), HEIGHT / 2 - h / (barHeight * 2), barWidth, h / barHeight);
             }
         }
@@ -364,7 +345,7 @@ function toggleFX(string) {
     } else if (string === "colourShift") {
         if (!colourShift) {
             colourShift = setInterval(function() {
-                $("#body-fx-wrapper").css("-webkit-filter", "hue-rotate(" + (Math.random() * 360) + "deg)");
+                $("#body-fx-wrapper").css("-webkit-filter", "hue-rotate(" + (Math.random() * 360) + "deg)").css("filter", "hue-rotate(" + (Math.random() * 360) + "deg)");
             }, 1000);
         } else {
             clearInterval(colourShift);

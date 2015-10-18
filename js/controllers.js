@@ -191,6 +191,13 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         function(newValue, oldValue) {
             nodesFactory.setupAnalyserGradient();
         }, true);
+
+    $scope.$watch(function() {
+            return settingsValue.user.backgroundColor;
+        },
+        function(newValue, oldValue) {
+            nodesFactory.setupAnalyserGradient();
+        }, true);
 }])
 
 .controller('FilterCtrl', ['$scope', 'settingsValue', 'nodesFactory', function($scope, settingsValue, nodesFactory) {

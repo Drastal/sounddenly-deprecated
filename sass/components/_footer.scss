@@ -1,7 +1,62 @@
 footer {
-	.credits {
-		color: #999;
-		font-size: 10px;
-		text-align: right;
-	}
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .filter {
+        background-color: $color-bg-md;
+    }
+}
+
+.filter-type {
+    .filter-type--title {
+        padding-left: 12px;
+        padding-right: 12px;
+        color: rgba(255, 255, 255, 0.4);
+    }
+    .active {
+        background-color: $color-acc-turquoise;
+    }
+}
+
+.turquoise .filter-type .active,
+.turquoise .btn-default:focus,
+.turquoise .btn-default.focus {
+    background-color: $color-acc-turquoise;
+}
+
+.green .filter-type .active,
+.green .btn-default:focus,
+.green .btn-default.focus {
+    background-color: $color-acc-green;
+}
+
+.blue .filter-type .active,
+.blue .btn-default:focus,
+.blue .btn-default.focus {
+    background-color: $color-acc-blue;
+}
+
+.orange .filter-type .active,
+.orange .btn-default:focus,
+.orange .btn-default.focus {
+    background-color: $color-acc-orange;
+}
+
+.red .filter-type .active,
+.red .btn-default:focus,
+.red .btn-default.focus {
+    background-color: $color-acc-red;
+}
+
+.violet .filter-type .active,
+.violet .btn-default:focus,
+.violet .btn-default.focus {
+    background-color: $color-acc-violet;
+}
+
+.filter-range {
+    padding: 0 24px 24px 24px;
+    overflow: hidden;
 }

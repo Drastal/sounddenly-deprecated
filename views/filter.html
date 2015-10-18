@@ -1,12 +1,12 @@
-<div class="row" ng-controller="FilterCtrl" data-snap-ignore="true">
-    <div class="col-sm-12  filter-type">
-        <label class="filter-type--title">Filters</label>
-        <buttons-radio class="btn-group" data-toggle="buttons-radio" model='filter.type' options='filter.types'></buttons-radio>
-    </div>
+<div class="row filter" ng-controller="FilterCtrl" data-snap-ignore="true">
     <div class="col-sm-12">
         <div class="filter-range" ng-hide="filter.type === 'off'">
             <slider class="{{filter.type}}" ng-model="filter.cutoff" min="filter.min" step="filter.step" max="filter.max" ng-show="!isBandFilter()"></slider>
             <slider class="{{filter.type}}" ng-model="filter.band" min="filter.min" step="filter.step" max="filter.max" ng-show="isBandFilter()" range="true"></slider>
         </div>
+    </div>
+    <div class="col-sm-12 filter-type">
+        <label class="filter-type--title">Filters</label>
+        <buttons-radio class="btn-group" data-toggle="buttons-radio" model='filter.type' options='filter.types'></buttons-radio>
     </div>
 </div>

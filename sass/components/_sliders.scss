@@ -84,6 +84,10 @@ $sliderHandleHeight: 36px;
     @include border-radius($sliderTrackHeight);
 }
 
+.light .player .slider-selection {
+    background-color: rgba(57, 68, 78, 1);
+}
+
 .slider-selection.tick-slider-selection {
     @include slider-background(#89cdef, #81bfde, #f7f7f7);
 }

@@ -21,6 +21,13 @@ angular.module('sounddenly.services', [])
         cutoff: 0,
         q: 0.0001,
     },
+    canvas: {
+        barHeight: 2,
+        barWidth: 4,
+        barSpacing: 1,
+        bleed: 1,
+        vibranceMode: true,
+    },
     colorsCode: {
         turquoise: '#1abc9c',
         orange: '#d35400',
@@ -105,6 +112,20 @@ angular.module('sounddenly.services', [])
     var canvasCtx;
     var analyserGradient;
 
+    var sredHex = "4E";
+    var sgrnHex = "5D";
+    var sbluHex = "6C";
+    var oredHex = "33";
+    var ogrnHex = "aa";
+    var obluHex = "ff";
+    var vibranceMode = false;
+    var barHeight = 2;
+    var barWidth = 4;
+    var barSpacing = 1;
+    var bleed = 1;
+    var canvasHeight;
+    var canvasWidth;
+
     nodes.setup = function(audioSource) {
         // Create nodes
         if (!sourceNode)
@@ -117,7 +138,7 @@ angular.module('sounddenly.services', [])
             filterNode = audioCtx.createBiquadFilter();
 
         // setup an analyser
-        analyserNode.fftSize = 256;
+        analyserNode.fftSize = 2048;
         bufferLength = analyserNode.frequencyBinCount;
         dataArray = new Uint8Array(bufferLength);
         analyserNode.getByteTimeDomainData(dataArray);
@@ -173,7 +194,7 @@ angular.module('sounddenly.services', [])
         settingsValue.player.q = qFactor;
         filterNode.frequency.value = frequency;
         filterNode.Q.value = qFactor;
-    }
+    };
 
     /**
      * Analyser functions
@@ -184,21 +205,66 @@ angular.module('sounddenly.services', [])
     };
 
     nodes.resizeCanvas = function() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.width / 4;
-        canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+        canvasWidth = canvas.offsetWidth;
+        canvasHeight = canvas.width / 2;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 
         drawAnalyser();
     };
 
     nodes.setupAnalyserGradient = function() {
-        analyserGradient = canvasCtx.createLinearGradient(0, 0, 0, canvas.height);
-        analyserGradient.addColorStop(1, colorsFactory.code());
-        analyserGradient.addColorStop(0, '#fff');
+        analyserGradient = canvasCtx.createLinearGradient(0, 0, 0, canvasHeight);
+        if (settingsValue.user.backgroundColor === 'dark') {
+            analyserGradient.addColorStop(1, '#fff');
+            analyserGradient.addColorStop(0, '#fff');
+
+        } else {
+            analyserGradient.addColorStop(1, '#000');
+            analyserGradient.addColorStop(0, '#000');
+        }
+        analyserGradient.addColorStop(0.5, colorsFactory.code());
     };
 
     var drawAnalyser = function() {
+        var loud;
+        var h;
+
         var drawVisual = requestAnimationFrame(drawAnalyser);
+        analyserNode.getByteFrequencyData(dataArray);
+
+        canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+        canvasCtx.fillStyle = analyserGradient;
+
+        for (var i = 0; i < bufferLength; i++) {
+            h = (dataArray[i] / 128.0) * canvasHeight / 2;
+            loud = Math.abs(dataArray[i]);
+            /*var cred = sredHex;
+            var cgrn = sgrnHex;
+            var cblu = sbluHex;*/
+
+            if (vibranceMode && loud > 0) {
+                canvas.setAttribute("style", "filter:brightness(" + (loud / 256 + 1) + "); -webkit-filter:brightness(" + (loud / 256 + 1) + ")");
+            } else {
+                canvas.removeAttribute("style");
+            }
+
+            if (bleed > 1) {
+                for (var o = 0; o < bleed; o++) {
+                    //--TODO-- Check for outerbars mode
+                    cred += Math.floor((oredHex / 2 - sredHex) / bleed);
+                    cgrn += Math.floor((ogrnHex / 2 - sgrnHex) / bleed);
+                    cblu += Math.floor((obluHex / 2 - sbluHex) / bleed);
+
+                    canvasCtx.fillRect(i * (barWidth + barSpacing), canvasHeight / 2 - ((2 - (o / bleed)) * h / (2 * barHeight)), barWidth, (((2 - (o / bleed)) * h) / barHeight));
+                }
+
+            } else {
+                canvasCtx.fillRect(i * (barWidth + barSpacing), canvasHeight / 2 - h / (barHeight * 2), barWidth, h / barHeight);
+            }
+        }
+        /*var drawVisual = requestAnimationFrame(drawAnalyser);
         analyserNode.getByteFrequencyData(dataArray);
 
         canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
@@ -214,7 +280,7 @@ angular.module('sounddenly.services', [])
             canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
             x += barWidth + 1;
-        }
+        }*/
     };
 
     return nodes;
