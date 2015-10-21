@@ -22,20 +22,18 @@ angular.module('sounddenly.services', [])
         q: 0.0001,
     },
     canvas: {
-        barHeight: 2,
-        barWidth: 4,
-        barSpacing: 1,
-        bleed: 1,
-        vibranceMode: true,
+        barHeight: 0.8,
+        barWidth: 2,
+        barSpacing: 5,
+        vibranceMode: false,
     },
     colorsCode: {
-        turquoise: '#1abc9c',
-        orange: '#d35400',
         blue: '#2980b9',
         green: '#27ae60',
-        violet: '#8e44ad',
+        orange: '#d35400',
         red: '#c0392b',
-        violet: '#d35400',
+        turquoise: '#1abc9c',
+        violet: '#8e44ad',
     },
     backgroundsCode: {
         dark: '#0B0D0D',
@@ -80,12 +78,14 @@ angular.module('sounddenly.services', [])
         audioSource.load();
         settingsValue.player.audioSource = url;
         nodesFactory.setup(audioSource);
+        player.setVolume();
     };
 
     player.setVolume = function(newVolume) {
         // Params : newVolume : integer between 0 and 100
-        settingsValue.player.volume = newVolume;
-        nodesFactory.setVolume(Math.round(Math.pow((parseInt(newVolume) / 100), 2) * 100) / 100);
+        if(newVolume)
+            settingsValue.player.volume = newVolume;
+        nodesFactory.setVolume(Math.round(Math.pow((parseInt(settingsValue.player.volume) / 100), 2) * 100) / 100);
     };
 
     player.getVolume = function() {
@@ -118,11 +118,10 @@ angular.module('sounddenly.services', [])
     var oredHex = "33";
     var ogrnHex = "aa";
     var obluHex = "ff";
-    var vibranceMode = false;
-    var barHeight = 2;
-    var barWidth = 4;
-    var barSpacing = 1;
-    var bleed = 1;
+    var vibranceMode;
+    var barHeight;
+    var barWidth;
+    var barSpacing;
     var canvasHeight;
     var canvasWidth;
 
@@ -147,7 +146,7 @@ angular.module('sounddenly.services', [])
         sourceNode.connect(gainNode);
         gainNode.connect(analyserNode);
         analyserNode.connect(audioCtx.destination);
-        sourceNode.loop = false;
+        nodes.setFilter();
     };
 
     nodes.destroy = function() {
@@ -166,7 +165,10 @@ angular.module('sounddenly.services', [])
      * Filter functions
      **/
     nodes.setFilter = function(filterType) {
-        if (filterType !== 'off') {
+        if(filterType)
+            settingsValue.player.filter = filterType;
+
+        if (settingsValue.player.filter !== 'off') {
             nodes.connectFilter();
             filterNode.type = filterType;
         } else {
@@ -204,14 +206,16 @@ angular.module('sounddenly.services', [])
         canvasCtx = canvas.getContext('2d');
     };
 
-    nodes.resizeCanvas = function() {
+    nodes.resizeCanvas = function(drawing) {
         canvasWidth = canvas.offsetWidth;
-        canvasHeight = canvas.width / 2;
+        canvasHeight = Math.max(document.body.offsetHeight - canvas.getBoundingClientRect().top + document.body.scrollTop - 90, 90); // Fill remaining space (position of canvas element from top of the body, then minus 100px for filters option)
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
         canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-        drawAnalyser();
+        if (!drawing) {
+            drawAnalyser();
+        }
     };
 
     nodes.setupAnalyserGradient = function() {
@@ -221,8 +225,8 @@ angular.module('sounddenly.services', [])
             analyserGradient.addColorStop(0, '#fff');
 
         } else {
-            analyserGradient.addColorStop(1, '#000');
-            analyserGradient.addColorStop(0, '#000');
+            analyserGradient.addColorStop(1, '#777');
+            analyserGradient.addColorStop(0, '#777');
         }
         analyserGradient.addColorStop(0.5, colorsFactory.code());
     };
@@ -230,6 +234,10 @@ angular.module('sounddenly.services', [])
     var drawAnalyser = function() {
         var loud;
         var h;
+        vibranceMode = settingsValue.canvas.vibranceMode;
+        barHeight = settingsValue.canvas.barHeight;
+        barWidth = settingsValue.canvas.barWidth;
+        barSpacing = settingsValue.canvas.barSpacing;
 
         var drawVisual = requestAnimationFrame(drawAnalyser);
         analyserNode.getByteFrequencyData(dataArray);
@@ -240,29 +248,17 @@ angular.module('sounddenly.services', [])
         for (var i = 0; i < bufferLength; i++) {
             h = (dataArray[i] / 128.0) * canvasHeight / 2;
             loud = Math.abs(dataArray[i]);
-            /*var cred = sredHex;
-            var cgrn = sgrnHex;
-            var cblu = sbluHex;*/
 
             if (vibranceMode && loud > 0) {
-                canvas.setAttribute("style", "filter:brightness(" + (loud / 256 + 1) + "); -webkit-filter:brightness(" + (loud / 256 + 1) + ")");
+                canvas.style.filter = 'brightness(' + (loud / 256 + 1) + ')';
+                canvas.style['-webkit-filter'] = 'brightness(' + (loud / 256 + 1) + ')';
             } else {
-                canvas.removeAttribute("style");
+                canvas.style.filter = '';
+                canvas.style['-webkit-filter'] = '';
             }
 
-            if (bleed > 1) {
-                for (var o = 0; o < bleed; o++) {
-                    //--TODO-- Check for outerbars mode
-                    cred += Math.floor((oredHex / 2 - sredHex) / bleed);
-                    cgrn += Math.floor((ogrnHex / 2 - sgrnHex) / bleed);
-                    cblu += Math.floor((obluHex / 2 - sbluHex) / bleed);
-
-                    canvasCtx.fillRect(i * (barWidth + barSpacing), canvasHeight / 2 - ((2 - (o / bleed)) * h / (2 * barHeight)), barWidth, (((2 - (o / bleed)) * h) / barHeight));
-                }
-
-            } else {
-                canvasCtx.fillRect(i * (barWidth + barSpacing), canvasHeight / 2 - h / (barHeight * 2), barWidth, h / barHeight);
-            }
+            canvasCtx.fillStyle = analyserGradient;
+            canvasCtx.fillRect(i * (barWidth + barSpacing), canvasHeight / 2 - h / (barHeight * 2), barWidth, h / barHeight);
         }
         /*var drawVisual = requestAnimationFrame(drawAnalyser);
         analyserNode.getByteFrequencyData(dataArray);
@@ -289,7 +285,7 @@ angular.module('sounddenly.services', [])
 .factory('colorsFactory', ['settingsValue', function(settingsValue) {
     var color = {};
 
-    color.code = function(colorName) {
+    color.code = function() {
         return settingsValue.colorsCode[settingsValue.user.accentColor] || settingsValue.turquoise;
     };
 

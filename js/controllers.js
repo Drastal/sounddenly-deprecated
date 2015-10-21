@@ -13,11 +13,17 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         source: '',
         loop: false,
     };
+    $scope.canvas = {
+            barHeight: settingsValue.canvas.barHeight,
+            barWidth: settingsValue.canvas.barWidth,
+            barSpacing: settingsValue.canvas.barSpacing,
+            vibranceMode: settingsValue.canvas.vibranceMode,
+        },
 
-    $scope.colors = {
-        accentColor: settingsFactory.getAccentColor(),
-        backgroundColor: settingsFactory.getBackgroundColor(),
-    };
+        $scope.colors = {
+            accentColor: settingsFactory.getAccentColor(),
+            backgroundColor: settingsFactory.getBackgroundColor(),
+        };
 
     $scope.$watch('colors.accentColor', function(newValue, oldValue) {
         settingsFactory.setAccentColor(newValue);
@@ -31,20 +37,54 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         settingsValue.player.loop = newValue;
     });
 
+    $scope.$watch('canvas.barHeight', function(newValue, oldValue) {
+        // Should be between 1 and 2
+        settingsValue.canvas.barHeight = 2 - newValue;
+    });
+
+    $scope.$watch('canvas.barWidth', function(newValue, oldValue) {
+        // Should be between 1 and 100
+        settingsValue.canvas.barWidth = parseInt(newValue);
+    });
+
+    $scope.$watch('canvas.barSpacing', function(newValue, oldValue) {
+        // Should be between 1 and 5
+        settingsValue.canvas.barSpacing = parseInt(newValue);
+    });
+
+    $scope.$watch('canvas.vibranceMode', function(newValue, oldValue) {
+        // Should be between 1 and 20
+        settingsValue.canvas.vibranceMode = newValue;
+    });
+
     $scope.loadAudio = function() {
-        playerFactory.setupAudio(document.querySelector('audio'), $scope.audio.source || 'sounds/loop.mp3');
+        playerFactory.setupAudio(document.querySelector('audio'), $scope.audio.source || 'http://streaming.radionomy.com/BlackLabelFM');
+        if (!$scope.audio.source)
+        	$scope.audio.source = 'Example with a stream';
+    };
+
+    $scope.loadSong = function(element) {
+        playerFactory.setupAudio(document.querySelector('audio'), URL.createObjectURL(element.files[0]));
+        $scope.audio.source = element.value;
     };
 
     $scope.loadSample = function() {
         playerFactory.setupAudio(document.querySelector('audio'), 'sounds/loop.mp3');
+        $scope.audio.source = '';
     };
 
     $scope.loadWhiteNoise = function() {
         playerFactory.setupAudio(document.querySelector('audio'), 'sounds/Whitenoisesound.mp3');
+        $scope.audio.source = '';
     };
 
     $scope.loadStream = function() {
         playerFactory.setupAudio(document.querySelector('audio'), 'http://streaming.radionomy.com/BlackLabelFM');
+        $scope.audio.source = '';
+    };
+
+    $scope.triggerUploadClick = function() {
+        document.getElementById('uploadFile').click();
     };
 }])
 
@@ -60,6 +100,7 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         durationTime: 0,
         playing: false,
         loaded: false,
+        radio: '',
     }
 
     $scope.play = function() {
@@ -145,13 +186,6 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         });
     });
 
-    audioSource.addEventListener('suspend', function() {
-        // Suspended to load in buffer
-        $scope.$apply(function() {
-
-        });
-    });
-
     audioSource.addEventListener('loadstart', function() {
         // Attempting to load a new song
         $scope.$apply(function() {
@@ -172,17 +206,24 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
     audioSource.addEventListener('durationchange', function() {
         // Update the song duration
         $scope.$apply(function() {
-        	if(audioSource.duration == 'Infinity' || audioSource.duration === 0) {
-        		// For stream
-        		$scope.audio.durationTime = extractRadioDomain(audioSource.firstElementChild.getAttribute('src'));
-        		return;
-        	}
+            if (audioSource.duration == 'Infinity' || audioSource.duration === 0) {
+                // For stream
+                $scope.audio.radio = extractRadioDomain(audioSource.firstElementChild.getAttribute('src'));
+                $scope.audio.durationTime = '';
+                return;
+            }
             if (!isNaN(audioSource.duration)) {
                 var duration = audioSource.duration;
                 slider.setAttribute('max', duration);
+                $scope.audio.radio = '';
                 $scope.audio.durationTime = duration.toHHMMSS();
             }
         });
+    });
+
+    window.addEventListener("resize", function() {
+        nodesFactory.setupAnalyserGradient();
+        nodesFactory.resizeCanvas(true);
     });
 
     $scope.$watch(function() {
@@ -206,10 +247,10 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
         types: settingsValue.filters,
         type: 'off',
         min: 10,
-        max: 12500,
+        max: 4000,
         step: 10,
         cutoff: 10,
-        band: [10, 12500]
+        band: [10, 4000]
     }
 
     $scope.$watch('filter.type', function(newValue, oldValue) {

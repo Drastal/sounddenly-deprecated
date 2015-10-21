@@ -1,23 +1,25 @@
 Sounddenly
 =============
 
-**_A new sound_ is born...**
-
-A web app to apply some filters on sounds.
+A web app to play your songs or streams with a visualizer and apply some basic filters.
 
 
 ###Technologies###
-Audio modifications are based on [Web Audio API](http://webaudio.github.io/web-audio-api/).
+Audio processing: [Web Audio API](http://webaudio.github.io/web-audio-api/).
 
-The single page aspect is rendered by [AngularJS](https://angularjs.org).
+JS Framework: [AngularJS](https://angularjs.org).
 
 
 ###Hall of fame###
-this project could not have happened without the advice of
+this project could not have happened without some great websites ...
+- [HTML5 ROCKS](http://www.html5rocks.com/en/tutorials/webaudio/intro/)
+- [CreativeJS](http://creativejs.com/resources/web-audio-api-getting-started/)
+- [Declan pen](http://codepen.io/AfroDev/pen/MYOrvP)
+
+... and the advice of
 - [edurand921](https://github.com/edurand921)
 - [Roxanne Ricci](https://github.com/rricci)
 - [raphaelb-EPF](https://github.com/raphaelb-EPF)
 - [Tilan](https://github.com/Tilan)
-- [Declan pen](http://codepen.io/AfroDev/pen/MYOrvP)
 
-Many thanks
+Thanks

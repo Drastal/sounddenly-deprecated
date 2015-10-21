@@ -20,7 +20,7 @@ $sliderHandleHeight: 36px;
         .slider-track {
             height: $sliderTrackHeight;
             width: 100%;
-            top: 50%;
+            top: 0;
             left: 0;
         }
         .slider-selection,
@@ -171,7 +171,7 @@ $sliderHandleHeight: 36px;
 	Player volume
 \* -------------------------------------------------------------------------- */
 
-.player-volume {
+.slider-mini {
     .slider {
         &.slider-horizontal {
             height: $sliderTrackHeight / 4;

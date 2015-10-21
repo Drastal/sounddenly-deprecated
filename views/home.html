@@ -1,27 +1,66 @@
 <div snap-content snap-opt-disable="'left'" class="container-fluid snap-content {{colors.backgroundColor}} {{colors.accentColor}}">
     <div class="wrapper">
         <header ng-include src="'views/header.html'"></header>
-
         <div ng-include src="'views/player.html'"></div>
-
         <footer ng-include src="'views/filter.html'"></footer>
     </div>
 </div>
-
-<div snap-drawer="right" class="snap-drawers--right container-fluid">
+<div snap-drawer="right" class="snap-drawers--right container-fluid {{colors.backgroundColor}} {{colors.accentColor}}">
     <div class="row">
         <div class="col-sm-12">
-            <h2>Settings</h2>
+            <h3>Colors</h3>
             <div class="form-group">
                 <label>Background</label>
-                <br/>
                 <select class="form-control" ng-model="colors.backgroundColor" ng-options="key as key for (key, value) in backgroundColors"></select>
             </div>
             <div class="form-group">
                 <label>Accent color</label>
-                <br/>
                 <select class="form-control" ng-model="colors.accentColor" ng-options="key as key for (key, value) in accentColors" ng-click="appSettings.update()"></select>
             </div>
+            <h3>Settings</h3>
+            <div class="checkbox">
+                <label class="btn btn-default" ng-class="{active: audio.loop}">
+                    <input type="checkbox" ng-model="audio.loop" hidden> Loopable
+                </label>
+            </div>
+            <h3>Visualizer</h3>
+            <div class="form-group">
+                <label>Bar height</label>
+                <div class="col-sm-12">
+                    <slider class="slider-mini" ng-model="canvas.barHeight" value="0.8" min="0.1" step="0.1" max="1"></slider>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Bar width</label>
+                <div class="col-sm-12">
+                    <slider class="slider-mini" ng-model="canvas.barWidth" value="2" min="1" step="1" max="20"></slider>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Bar spacing</label>
+                <div class="col-sm-12">
+                    <slider class="slider-mini" ng-model="canvas.barSpacing" value="5" min="1" step="1" max="10"></slider>
+                </div>
+            </div>
+            <br>
+            <div class="checkbox">
+                <label class="btn btn-default" ng-class="{active: canvas.vibranceMode}">
+                    <input type="checkbox" ng-model="canvas.vibranceMode" hidden> Vibrance
+                </label>
+            </div>
+            <h3>Samples</h3>
+            <div class="form-group">
+                <button type="button" class="btn btn-default" ng-click="loadSample()">
+                    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Load a song
+                </button>
+                <button type="button" class="btn btn-default" ng-click="loadWhiteNoise()">
+                    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Load a white noise
+                </button>
+                <button type="button" class="btn btn-default" ng-click="loadStream()">
+                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Load a stream
+                </button>
+            </div>
+            <h3>Credits</h3>
             <p class="credits">
                 A simple Web Audio API &amp; AngularJS project, available on <a href="https://github.com/Drastal/Sounddenly">Github</a>
             </p>

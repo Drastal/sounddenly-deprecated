@@ -24,3 +24,17 @@ a {
 .green a {color: $color-acc-green;}
 .violet a {color: $color-acc-violet;}
 .red a {color: $color-acc-red;}
+
+.turquoise .btn.active, .turquoise .btn:active {background-color: $color-acc-turquoise;}
+.orange .btn.active, .orange .btn:active {background-color: $color-acc-orange;}
+.blue .btn.active, .blue .btn:active {background-color: $color-acc-blue;}
+.green .btn.active, .green .btn:active {background-color: $color-acc-green;}
+.violet .btn.active, .violet .btn:active {background-color: $color-acc-violet;}
+.red .btn.active, .red .btn:active {background-color: $color-acc-red;}
+
+.turquoise .btn:hover {background-color: lighten($color-acc-turquoise, 10);}
+.orange .btn:hover {background-color: lighten($color-acc-orange, 10);}
+.blue .btn:hover {background-color: lighten($color-acc-blue, 10);}
+.green .btn:hover {background-color: lighten($color-acc-green, 10);}
+.violet .btn:hover {background-color: lighten($color-acc-violet, 10);}
+.red .btn:hover {background-color: lighten($color-acc-red, 10);}

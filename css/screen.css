@@ -126,6 +126,66 @@ a {
   color: #c0392b;
 }
 
+/* line 28, ../sass/components/_main.scss */
+.turquoise .btn.active, .turquoise .btn:active {
+  background-color: #1abc9c;
+}
+
+/* line 29, ../sass/components/_main.scss */
+.orange .btn.active, .orange .btn:active {
+  background-color: #d35400;
+}
+
+/* line 30, ../sass/components/_main.scss */
+.blue .btn.active, .blue .btn:active {
+  background-color: #2980b9;
+}
+
+/* line 31, ../sass/components/_main.scss */
+.green .btn.active, .green .btn:active {
+  background-color: #27ae60;
+}
+
+/* line 32, ../sass/components/_main.scss */
+.violet .btn.active, .violet .btn:active {
+  background-color: #8e44ad;
+}
+
+/* line 33, ../sass/components/_main.scss */
+.red .btn.active, .red .btn:active {
+  background-color: #c0392b;
+}
+
+/* line 35, ../sass/components/_main.scss */
+.turquoise .btn:hover {
+  background-color: #28e1bd;
+}
+
+/* line 36, ../sass/components/_main.scss */
+.orange .btn:hover {
+  background-color: #ff6a07;
+}
+
+/* line 37, ../sass/components/_main.scss */
+.blue .btn:hover {
+  background-color: #409ad5;
+}
+
+/* line 38, ../sass/components/_main.scss */
+.green .btn:hover {
+  background-color: #36d278;
+}
+
+/* line 39, ../sass/components/_main.scss */
+.violet .btn:hover {
+  background-color: #a563c1;
+}
+
+/* line 40, ../sass/components/_main.scss */
+.red .btn:hover {
+  background-color: #d65548;
+}
+
 /* line 3, ../sass/components/_header.scss */
 header .header-options {
   text-align: right;
@@ -261,8 +321,7 @@ footer .filter {
 
 /* line 59, ../sass/components/_footer.scss */
 .filter-range {
-  padding: 0 24px 24px 24px;
-  overflow: hidden;
+  padding: 12px 46px;
 }
 
 /* -------------------------------------------------------------------------- *\
@@ -286,7 +345,7 @@ footer .filter {
 .slider.slider-horizontal .slider-track {
   height: 24px;
   width: 100%;
-  top: 50%;
+  top: 0;
   left: 0;
 }
 /* line 26, ../sass/components/_sliders.scss */
@@ -497,57 +556,57 @@ footer .filter {
 	Player volume
 \* -------------------------------------------------------------------------- */
 /* line 176, ../sass/components/_sliders.scss */
-.player-volume .slider.slider-horizontal {
+.slider-mini .slider.slider-horizontal {
   height: 6px;
 }
 /* line 178, ../sass/components/_sliders.scss */
-.player-volume .slider.slider-horizontal .slider-track {
+.slider-mini .slider.slider-horizontal .slider-track {
   height: 6px;
 }
 /* line 181, ../sass/components/_sliders.scss */
-.player-volume .slider.slider-horizontal .slider-tick,
-.player-volume .slider.slider-horizontal .slider-handle {
+.slider-mini .slider.slider-horizontal .slider-tick,
+.slider-mini .slider.slider-horizontal .slider-handle {
   margin-left: -15px;
   margin-top: -12px;
 }
 /* line 187, ../sass/components/_sliders.scss */
-.player-volume .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
+.slider-mini .slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
   margin-top: 36px;
 }
 /* line 193, ../sass/components/_sliders.scss */
-.player-volume .slider .tooltip.top {
+.slider-mini .slider .tooltip.top {
   margin-top: -46.8px;
 }
 /* line 198, ../sass/components/_sliders.scss */
-.player-volume .slider-track {
+.slider-mini .slider-track {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
 /* line 201, ../sass/components/_sliders.scss */
-.player-volume .slider-selection {
+.slider-mini .slider-selection {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
 /* line 204, ../sass/components/_sliders.scss */
-.player-volume .slider-track-low,
-.player-volume .slider-track-high {
+.slider-mini .slider-track-low,
+.slider-mini .slider-track-high {
   border-radius: border-radius(6px);
 }
 /* line 208, ../sass/components/_sliders.scss */
-.player-volume .slider-handle {
+.slider-mini .slider-handle {
   width: 30px;
   height: 30px;
 }
 /* line 211, ../sass/components/_sliders.scss */
-.player-volume .slider-handle.round {
+.slider-mini .slider-handle.round {
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
 }
 /* line 215, ../sass/components/_sliders.scss */
-.player-volume .slider-tick {
+.slider-mini .slider-tick {
   width: 30px;
   height: 30px;
 }
@@ -741,46 +800,52 @@ footer .filter {
 }
 /* line 55, ../sass/components/_mixer.scss */
 .player .player-progress #songSlider {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 /* line 59, ../sass/components/_mixer.scss */
+.player .player-radio {
+  text-align: center;
+  font-size: 48px;
+  line-height: 200%;
+}
+/* line 64, ../sass/components/_mixer.scss */
 .player .player-timer {
   text-align: center;
   margin-top: 20px;
 }
-/* line 62, ../sass/components/_mixer.scss */
+/* line 67, ../sass/components/_mixer.scss */
 .player .player-timer .timer {
   display: inline-block;
   margin-top: 10px;
   font-family: sans-serif;
   font-size: 28px;
 }
-/* line 68, ../sass/components/_mixer.scss */
+/* line 73, ../sass/components/_mixer.scss */
 .player .player-timer .timer-current,
 .player .player-timer .timer-duration {
   padding: 10px;
 }
-/* line 72, ../sass/components/_mixer.scss */
+/* line 77, ../sass/components/_mixer.scss */
 .player .player-timer .timer-current {
   font-size: 1.4em;
 }
-/* line 75, ../sass/components/_mixer.scss */
+/* line 80, ../sass/components/_mixer.scss */
 .player .player-timer .timer-duration {
   width: 100%;
   border-top: 1px solid #999;
   color: #999;
 }
 
-/* line 87, ../sass/components/_mixer.scss */
+/* line 92, ../sass/components/_mixer.scss */
 .light .player .player-controls .player-controls-play .glyphicon-play, .light .player .player-controls .player-controls-play .glyphicon-pause {
   border-color: #39444e;
 }
 
-/* line 95, ../sass/components/_mixer.scss */
+/* line 100, ../sass/components/_mixer.scss */
 .analyser {
   display: block;
   margin: 0;
   padding: 0;
   width: 100%;
-  max-height: 200px;
+  min-height: 100px;
 }

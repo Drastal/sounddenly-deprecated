@@ -14,14 +14,14 @@ angular.module('sounddenly.directives', [])
             options: '=options'
         },
         controller: function($scope) {
-            $scope.activate = function(idx) {
+            $scope.activate = function(idx, element) {
                 $scope.model = $scope.options[idx];
             };
         },
         template: "<button type='button' class='btn btn-default' " +
             "ng-class='{active: option == model}'" +
             "ng-repeat='option in options' " +
-            "ng-click='activate($index)'>{{option}} " +
+            "ng-click='activate($index, this)'>{{option}} " +
             "</button>"
     };
 });

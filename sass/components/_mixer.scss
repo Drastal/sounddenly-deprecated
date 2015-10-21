@@ -53,8 +53,13 @@
     }
     .player-progress {
         #songSlider {
-            margin-top: 50px;
+            margin-top: 60px;
         }
+    }
+    .player-radio {
+        text-align: center;
+        font-size: 48px;
+        line-height: 200%;
     }
     .player-timer {
         text-align: center;
@@ -97,5 +102,5 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    max-height: 200px;
+    min-height: 100px;
 }

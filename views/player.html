@@ -13,14 +13,16 @@
 				</div>
 				<div class="player-controls-volume">
 					<span class="glyphicon control" ng-class="{'glyphicon-volume-down': audio.volume > 0, 'glyphicon-volume-off': audio.volume == 0}" aria-hidden="true" ng-click="lower()"></span>
-					<slider class="player-volume control" ng-model="audio.volume" min="0" step="2" max="100"></slider>
+					<slider class="slider-mini player-volume control" ng-model="audio.volume" min="0" step="2" max="100"></slider>
 					<span class="glyphicon glyphicon-volume-up control" aria-hidden="true" ng-click="higher()"></span>
 				</div>
 			</span>
 
-			<span class="hidden-xs col-sm-6 col-md-8 player-progress">
-				<input id="songSlider" data-slider-id='songSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.0001" data-slider-value="0"/>
+			<span class="hidden-xs col-sm-6 col-md-8 player-progress" ng-hide="audio.radio">
+				<input id="songSlider" data-slider-id='songSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.0001" data-slider-value="0" ng-hide="!audio.loaded"/>
 			</span>
+
+			<span class="hidden-xs col-sm-6 col-md-8 player-radio" ng-show="audio.radio">{{audio.radio}}</span>
 
 			<span class="col-xs-6 col-sm-3 col-md-2 player-timer">
 				<div class="timer">
