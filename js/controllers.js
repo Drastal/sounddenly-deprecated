@@ -58,7 +58,7 @@ angular.module('sounddenly.controllers', ['LocalStorageModule'])
     });
 
     $scope.loadAudio = function() {
-        playerFactory.setupAudio(document.querySelector('audio'), $scope.audio.source || 'http://streaming.radionomy.com/BlackLabelFM');
+        playerFactory.setupAudio(document.querySelector('audio'), $scope.audio.source || 'http://streaming.radionomy.com/MyAudioRadio');
         if (!$scope.audio.source)
         	$scope.audio.source = 'Example with a stream';
     };
