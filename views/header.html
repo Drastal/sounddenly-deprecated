@@ -12,7 +12,7 @@
                     <span hidden><input type="file" accept="audio/*" id="uploadFile" onchange="angular.element(this).scope().loadSong(this)"/></span>
                     <span class="btn btn-default" ng-click="triggerUploadClick()"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;&nbsp;Browse</span>
                     <div class="input-group">
-                        <input class="form-control file-browse" type="text" placeholder="Enter audio url (stream or song)" ng-model="audio.source" data-snap-ignore="true" />
+                        <input class="form-control file-browse" type="text" placeholder="Streaming URL" ng-model="audio.source" data-snap-ignore="true" />
                         <button type="submit" class="btn btn-default">
                             <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                         </button>
