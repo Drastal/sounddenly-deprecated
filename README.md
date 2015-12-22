@@ -3,6 +3,9 @@ Sounddenly
 
 A web app to play your songs or streams with a visualizer and apply some basic filters.
 
+*DEPRECATED*
+This project no longer be maintened. A new sounddenly project starts, proper.
+
 
 ###Technologies###
 Audio processing: [Web Audio API](http://webaudio.github.io/web-audio-api/).
